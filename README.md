@@ -1,3 +1,11 @@
+# What is this?
+This is an edit (or fork, if you must say so) of nightbloo/nb3bot, a Dubtrack.FM BOT made for the nightblue3 room.
+
+You will notice there is no "fork" warning on the repository page, that's because this is not a direct fork, but a copy of the repository.
+That was done intentionally to allow for a "issues" tab on this repository (GitHub doesn't have Issue pages for forks).
+
+Below you'll find how to setup the BOT yourself, though it might be incomplete to how nightbloo/nb3bot has it, so I would recommend using that.
+
 # Getting started
 Couple of steps to get started and getting it working:
 

@@ -1,26 +1,3 @@
-/*
- **************************************************************************
- * ABOUT
- **************************************************************************
- *
- * Nb3Bot is a bot created for the
- * NightBlue3 room on www.dubtrack.fm
- *
- **************************************************************************
- *
- **************************************************************************
- * DEVELOPERS
- **************************************************************************
- *
- * @ZubOhm
- * @Netux
- * @Matt
- * @DemoZ
- * @Larry1123
- *
- **************************************************************************
- */
-
 // Random seeds
 var seedrandom = require('seed-random');
 // Time formatting
@@ -53,44 +30,12 @@ function regCommands(commandManager) {
             }
         )
         ,
-        new Command('del', ['del'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                if (utils.getTargetName()) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + utils.getTargetName() + ' has been deleted. *Beep Boop*');
-                }
-            }
-        )
-        ,
         new Command('song', ['song'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
             function (utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' The current song is ' + utils.getMediaName() + ', the link is ' + utils.currentMediaPermaLink);
-            }
-        )
-        ,
-        new Command('stream', ['stream'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.twitchManager.getStream('Nightblue3', function (err, body) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    var stream = body.stream;
-                    if (stream) {
-                        utils.bot.sendChat(stream.channel.display_name + ' is streaming ' + stream.channel.game + '! You can watch him at ' + stream.channel.url);
-                        utils.bot.sendChat(stream.preview.small + ' Viewers:' + stream.viewers);
-                    }
-                    else {
-                        utils.bot.sendChat('NightBlue3 is not currently streaming! He streams at https://www.twitch.tv/nightblue3');
-                    }
-                });
             }
         )
         ,

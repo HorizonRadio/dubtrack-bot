@@ -1,8 +1,8 @@
 {
-  "name": "nb3bot",
+  "name": "KappaBOT",
   "version": "1.0.1",
-  "description": "Bot made for NB3's dubtrack room",
-  "main": "zubbot.js",
+  "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on KappaCave",
+  "main": "bot.js",
   "dependencies": {
     "dotenv": "1.2.0",
     "dubapi": "latest",
@@ -10,7 +10,6 @@
     "ioredis": "latest",
     "jsonfile": "2.2.x",
     "moment": "^2.11.2",
-    "pmx": "^0.6.0",
     "seed-random": "^2.2.0",
     "twitch-api": "^0.4.3"
   },
@@ -35,7 +34,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nightbloo/nb3bot/issues"
+    "url": "https://github.com/netox005/KappaBOT/issues"
   },
-  "homepage": "https://github.com/nightbloo/nb3bot#readme"
+  "homepage": "https://github.com/netox005/KappaBOT#readme"
 }

@@ -6,6 +6,10 @@
  * NightBlueBot is a bot created for the
  * NightBlue3 room on www.dubtrack.fm
  *
+ * This is a modified version of said
+ * bot, for usage on the KappaCave
+ * room on www.dubtrack.fm as well
+ *
  **************************************************************************
  * DEVELOPERS
  **************************************************************************
@@ -20,8 +24,8 @@
  * COMMAND LIST
  **************************************************************************
  *
- * List can be found at https://git.io/vPBvd
- * or by reading through the file `commands.js`
+ * List can be found by reading through
+ * the file `commands.js`
  *
  **************************************************************************
  */
@@ -69,8 +73,6 @@ new DubAPI({
      * @param {DubAPI} bot
      * */
     function (err, bot) {
-        // keymetrics
-        require('./lib/keymetrics.js').keymetrics(bot, redisManager);
         var BotUtils = require('./lib/botUtils.js');
         var botUtils = new BotUtils(bot);
         require('./commands.js')(commandManager);

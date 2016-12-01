@@ -39,15 +39,6 @@ function regCommands(commandManager) {
             }
         )
         ,
-        new Command('nyancat', ['nyancat'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(":nyancat: ~ Meow!");
-            }
-        )
-        ,
         // No cooldown because no messages no need to cool this down
         new Command('props', ['props'], 0, [], [],
             /**
@@ -55,39 +46,6 @@ function regCommands(commandManager) {
              */
             function (utils) {
                 doProps(utils, commandManager);
-            }
-        )
-        ,
-        new Command('probs', ['probs'], 0, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                if (Math.dice(2) !== 1) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' this probably doesn\'t deserve a prop for you? then why bother doing the command ¯\\_(ツ)_/¯');
-                    return;
-                }
-                doProps(utils, commandManager);
-            }
-        )
-        ,
-        new Command('pops', ['pops', 'pop'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' pops! bubbles pop: https://i.imgur.com/zEqeTZH.png ! ' +
-                    '_pst, you might have wanted to do !props instead_');
-            }
-        )
-        ,
-        new Command('porpoise', ['porps', 'porp', 'porpoise'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' here you go, a porpoise: https://i.imgur.com/1oBtXoN.png ' +
-                    '_...or if you meant !props, then you might wanna retry with the correct spelling._');
             }
         )
         ,
@@ -121,86 +79,12 @@ function regCommands(commandManager) {
             }
         )
         ,
-        new Command('subsunday', ['subsunday'], 1, ['resident-dj'], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' On Sunday we lock the queue and let only NightBlue3 twitch subs play for the duration of the stream that day.');
-                utils.bot.sendChat('You can sub to Nightblue3 https://www.twitch.tv/nightblue3/subscribe');
-                utils.bot.sendChat('If you have already subbed to Nightblue3 use this link to get RDJ https://git.io/voXqA');
-            }
-        )
-        ,
-        new Command('residentdj', ['sub', 'subs', 'subscribe', 'residentdj', 'rdj', 'resdj'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' To become a Resident DJ, or find out more information read https://git.io/voXqA');
-            }
-        )
-        ,
         new Command('rules', ['rules'], 0.5, [], [],
             /**
              * @param {MessageUtils} utils
              */
             function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/vWJnY');
-            }
-        )
-        ,
-        new Command('getrule', ['getrule'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                var args;
-                var argsLength = utils.getCommandArguments().length;
-                var rule = [];
-                if (argsLength > 0) {
-                    for (var way = argsLength > 1 ? 1 : 0; way >= 0; way--) {
-                        args = utils.getCommandArguments().slice(0, argsLength - way).join(' ').toLowerCase();
-                        switch (args) { // TODO: Make this into a JSON (?)
-                            default:
-                                if (way == 0) {
-                                    utils.bot.sendChat('@' + utils.getUserUsername() + ' no said rule found. Sending link to rules instead.');
-                                }
-                                break;
-                            case 'aboutstaff':
-                            case 'about staff':
-                                rule.push("If you respect the staff, ignore warnings or request from staff, or are trying to disrupt the actions of the mods you will be banned from the community permanently.");
-                                rule.push("Please PM the staff member you have a disagreement and try to resolve the problem.");
-                                break;
-                        }
-                        if (rule) {
-                            break;
-                        }
-                    }
-                }
-                if (rule.length <= 0) {
-                    rule.push("Rules: https://git.io/vWJnY");
-                }
-                rule.forEach(function (ru, index) {
-                    var target = way == 1 && index === 0 ? utils.getTargetName(utils.getCommandArguments().length) : '';
-                    utils.bot.sendChat(target + ' ' + ru);
-                });
-            }
-        )
-        ,
-        new Command('kappa', ['kappa'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                var kappaList = [':Kappa:', ':KappaPride:', ':KappaRoss:', ':Keepo:', ':froKappaK:', ':hoyNyanKappa:', ':kingKappa:', ':lordKappa:', ':ragKappa:', ':kappaI:', ':kappaRoll:', ':blacKappa:', ':kappaEnvy:', ':kappaBlues:', ':kappaPrince:', ':kappaWarmth:', ':kappaYella:', ':sunKappa:', ':yummiKappa:', ':zirkelKappa:', ':buttsKappa:', ':azumiPikappa:', ':Skappa:', 'OfficerKappa'];
-                var random = kappaList[Math.dice(kappaList.length)];
-                if (utils.getTargetName()) {
-                    utils.bot.sendChat(utils.getTargetName() + ' ' + utils.getUserUsername() + ' has sent a Kappa your way! ' + random);
-                }
-                else {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + random);
-                }
+                utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/v1ZfB');
             }
         )
         ,
@@ -211,6 +95,16 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' you can download DubX at https://www.dubx.net');
                 utils.bot.sendChat('Follow this guide to help you install DubX! https://git.io/vzCVn');
+            }
+        )
+        ,
+        new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function (utils) {
+                utils.bot.sendChat(utils.getTargetName() + ' you can download _give dem emotes_ at https://gde.netux.ml');
+                utils.bot.sendChat('*Note:* Put your mouse over button to see instructions');
             }
         )
         ,
@@ -229,26 +123,16 @@ function regCommands(commandManager) {
              */
             function (utils) {
                 var bgLinks = {
-                    'Snaky': 'https://imgur.com/a/iQ8rh'
-                    ,
-                    'Maskinen': 'https://imgur.com/a/P2Y8e'
-                    ,
-                    'Netux': 'https://imgur.com/a/j6QbM'
-                    ,
-                    'Frosolf': 'https://imgur.com/a/NZvz1 & https://goo.gl/sqfesS (only anime)'
-                    ,
-                    'SiilerBloo': 'https://imgur.com/a/oZKQ3'
-                    ,
-                    'Pikachu': 'https://imgur.com/a/75R64'
-                    ,
-                    'Jagex': 'https://imgur.com/a/swXWN & https://imgur.com/a/rR38y'
-                    ,
-                    'DingoTheMagic': 'https://imgur.com/a/DAaYw'
-                    ,
-                    'TickingTime': 'https://imgur.com/a/jWhjX'
-                    ,
-                    'ItsClutch': 'https://imgur.com/a/EixZ2'
-                    ,
+                    'Snaky': 'https://imgur.com/a/iQ8rh',
+                    'Maskinen': 'https://imgur.com/a/P2Y8e',
+                    'Netux': 'https://imgur.com/a/j6QbM',
+                    'Frosolf': 'https://imgur.com/a/NZvz1 & https://goo.gl/sqfesS (only anime)',
+                    'SiilerBloo': 'https://imgur.com/a/oZKQ3',
+                    'Pikachu': 'https://imgur.com/a/75R64',
+                    'Jagex': 'https://imgur.com/a/swXWN & https://imgur.com/a/rR38y',
+                    'DingoTheMagic': 'https://imgur.com/a/DAaYw',
+                    'TickingTime': 'https://imgur.com/a/jWhjX',
+                    'ItsClutch': 'https://imgur.com/a/EixZ2',
                     'Alexrerder': 'http://goo.gl/o06VPP'
                 };
 
@@ -271,11 +155,8 @@ function regCommands(commandManager) {
                 var bgUrl;
                 if (utils.getCommandArguments()[0].toLowerCase() === 'room') {
                     utils.bot.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.bot.getRoomMeta().id + '/image');
-                    return;
-                }
-                else if (bgUrl = checkIfSpecify()) {
+                } else if (bgUrl = checkIfSpecify()) {
                     utils.bot.sendChat(utils.getTargetName(2) + ' ' + bgUrl + "'s BGs: " + bgLinks[bgUrl]);
-                    return;
                 }
             }
         )
@@ -286,15 +167,6 @@ function regCommands(commandManager) {
              */
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' How to Queue a Song: https://imgur.com/a/FghLg');
-            }
-        )
-        ,
-        new Command('plops', ['plops'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' :poop:');
             }
         )
         ,
@@ -394,15 +266,6 @@ function regCommands(commandManager) {
             }
         )
         ,
-        new Command('roominfo', ['roominfo', 'community', 'room', 'info', 'roomtheme', 'communitytheme', 'theme'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' This community plays ' + utils.bot.getRoomMeta().name + ' (as said on the title). Songs over 6:30 will be skipped so please follow the guidelines! Rules: https://git.io/vWJnY');
-            }
-        )
-        ,
         // Mod command only no cooldown needed : require mute
         new Command('mute', ['mute'], 0, [], ['mute'],
             /**
@@ -455,66 +318,15 @@ function regCommands(commandManager) {
                 });
             }
         )
-        ,
-        new Command('twitchlink', ['twitchlink'], 0.5, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                var key = utils.getCommandArguments()[0];
-                utils.redisManager.getTwitchDubAuthKey(key, function (result) {
-                    if (result) {
-                        if (utils.getUserId == result) {
-                            utils.redisManager.getTwitchSub(result, function (result) {
-                                if (result) {
-                                    if (utils.bot.hasPermission(utils.bot.getSelf(), 'set-roles')) {
-                                        if (!utils.getUserRole()) {
-                                            utils.bot.moderateSetRole(utils.getUserId(), 'resident-dj');
-                                        }
-                                    }
-                                    else {
-                                        utils.bot.sendChat('@' + utils.getUserUsername() + ' you have a role in this room as it is I will not change it.');
-                                    }
-                                }
-                            });
-                        }
-                        else {
-                            utils.bot.sendChat('This key has been used on another dubtrack account!');
-                        }
-                    }
-                    else {
-                        utils.redisManager.getTwitchAuthKey(key, function (result) {
-                            if (result) {
-                                utils.redisManager.setTwitch(utils.getUserId(), result);
-                                utils.bot.sendChat('@' + utils.getUserUsername() + ' your account has been linked with the twitch account ' + result);
-                                utils.redisManager.getTwitchSub(result, function (result) {
-                                    if (result) {
-                                        if (utils.bot.hasPermission(utils.bot.getSelf(), 'set-roles')) {
-                                            if (!utils.getUserRole()) {
-                                                utils.bot.moderateSetRole(utils.getUserId(), 'resident-dj');
-                                            }
-                                        }
-                                    }
-                                });
-                                utils.redisManager.setTwitchDubAuthKey(key, utils.getUserId());
-                            }
-                            else {
-                                /// Well this is not a key it seems just let it go
-                            }
-                        });
-                    }
-                });
-            }
-        )
-        ,
+        /*, TODO: Make wiki page to commands and change this
         new Command('commands', ['commands'], 1, [], [],
             /**
              * @param {MessageUtils} utils
-             */
+             *//*
             function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/vPBvd');
+                utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/{LUL}');
             }
-        )
+        )*/
         ,
         new Command('setcd', ['setcd', 'setcooldown', 'cooldown'], 0, ['mod'], [],
             /**
@@ -598,24 +410,6 @@ function regCommands(commandManager) {
             }
         )
         ,
-        new Command('forproducers', ['producers', 'forproducers'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' We no longer allow producers to play their own songs or advertise their music in any way.');
-            }
-        )
-        ,
-        new Command('forpromoters', ['promoters', 'forpromoters'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' (Click for better quality) https://i.imgur.com/0H4toVQ.png');
-            }
-        )
-        ,
         new Command('clear', ['clear', 'laggy'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -692,15 +486,6 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Anime List: https://goo.gl/d4lvua');
                 utils.bot.sendChat('Never_Pause also recommends his animelist: https://goo.gl/h6OoW3');
-            }
-        )
-        ,
-        new Command('streamover', ['streamover', 'streamisover', 'gameover', 'streamend', 'streamended'], 1, ['vip'], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function (utils) {
-                utils.bot.sendChat('@djs all right, stream is over! Dequeue your troll songs unless you want them to be skipped or removed.');
             }
         )
         ,

@@ -1,5 +1,5 @@
 {
-  "name": "KappaBOT",
+  "name": "KappaCave-BOT",
   "version": "1.0.1",
   "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on KappaCave",
   "main": "bot.js",
@@ -34,7 +34,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/netox005/KappaBOT/issues"
+    "url": "https://github.com/netox005/KappaCave-BOT/issues"
   },
-  "homepage": "https://github.com/netox005/KappaBOT#readme"
+  "homepage": "https://github.com/netox005/KappaCave-BOT#readme"
 }

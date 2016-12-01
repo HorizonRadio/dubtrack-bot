@@ -1,0 +1,41 @@
+{
+  "name": "nb3bot",
+  "version": "1.0.1",
+  "description": "Bot made for NB3's dubtrack room",
+  "main": "zubbot.js",
+  "dependencies": {
+    "dotenv": "1.2.0",
+    "dubapi": "latest",
+    "express": "^4.13.4",
+    "ioredis": "latest",
+    "jsonfile": "2.2.x",
+    "moment": "^2.11.2",
+    "pmx": "^0.6.0",
+    "seed-random": "^2.2.0",
+    "twitch-api": "^0.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nightbloo/nb3bot.git"
+  },
+  "keywords": [
+    "Bot",
+    "Dubtrack"
+  ],
+  "author": "ZubOhm",
+  "contributors": [
+    "Matt Hatter",
+    "Netux",
+    "DemoZ",
+    "Larry1123"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nightbloo/nb3bot/issues"
+  },
+  "homepage": "https://github.com/nightbloo/nb3bot#readme"
+}

@@ -1,0 +1,70 @@
+{
+  "simple": {
+    "name": "Simple cookie",
+    "emote": ":cookie:"
+  },
+  "choco-chips": {
+    "name": "Cookie with chocolate chips",
+    "emote": ":cookie:"
+  },
+  "sugar": {
+    "name": "Sugar cookie",
+    "emote": ":PJSugar::cookie::PJSugar:"
+  },
+  "salt": {
+    "name": "Salt cookie",
+    "emote": ":pjsalt::cookie::pjsalt:"
+  },
+  "peanut-butter": {
+    "name": "Peanut Butter cookie",
+    "emote": ":foodButter::cookie::foodButter:"
+  },
+  "ghost-shape": {
+    "name": "Ghost shaped cookie",
+    "emote": ":ghost::cookie::ghost:"
+  },
+  "heart-shape": {
+    "name": "Heart shaped cookie",
+    "emote": ":thorlarCookie:"
+  },
+  "oreo": {
+    "name": "Oreo",
+    "emote": ":gabOreo:"
+  },
+  "pizza": {
+    "name": "Pizza flavoured cookie",
+    "emote": ":pizza::cookie::pizza:"
+  },
+  "taco": {
+    "name": "Taco flavoured cookie",
+    "emote": ":taco::cookie::taco:"
+  },
+  "vanilla": {
+    "name": "Vanilla cookie",
+    "emote": ":cookie:"
+  },
+  "strawberry": {
+    "name": "Strawberry cookie",
+    "emote": ":strawberry::cookie:::strawberry:"
+  },
+  "apple": {
+    "name": "Apple flavoured cookie",
+    "emote": ":apple::cookie::apple:"
+  },
+  "cat": {
+    "name": "Cookiecat (Steven Universe)",
+    "emote": ":cat::cookie::cat:"
+  },
+  "honey": {
+    "name": "Honey flavoured cookie",
+    "emote": ":honey_pot::cookie::honey_pot:"
+  },
+  "pony-shape": {
+    "name": "Pony shaped cookie",
+    "emote": ":tosanP::cookie::tosanP:"
+  },
+  "netux-shape": {
+    "name": "Netux/Flapjack shaped cookie",
+    "emote": ":FlapJack::cookie::FlapJack:"
+  }
+}

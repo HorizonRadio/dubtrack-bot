@@ -625,7 +625,7 @@ function regCommands(commandManager) {
                     return;
                 }
                 utils.redisManager.getProps(utils.getUserId(), function (propsCount) {
-                    if (!propsCount || isNaN(propsCount)) propsCount = 0;
+                    if (typeof propsCount === 'undefined' || isNaN(propsCount)) propsCount = 0;
                     if (propsCount < utils.rouletteManager.currentPrice) {
                         utils.bot.sendChat('@' + utils.getUserUsername() + ' you\'re low in props! Sorry :S');
                         return;

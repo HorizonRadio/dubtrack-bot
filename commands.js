@@ -726,7 +726,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord server: https://discord.gg/tQgSvdq');
+                utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
             }
         )
     ].forEach(function (command) {

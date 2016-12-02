@@ -1,10 +1,10 @@
 # What is this?
-This is an edit (or fork, if you must say so) of nightbloo/nb3bot, a Dubtrack.FM BOT made for the nightblue3 room.
+This is an edit (or fork, if you must say so) of [nightbloo/nb3bot](https://github.com/nightbloo/nb3bot) , a Dubtrack.FM BOT made for the nightblue3 room.
 
 You will notice there is no "fork" warning on the repository page, that's because this is not a direct fork, but a copy of the repository.
 That was done intentionally to allow for a "issues" tab on this repository (GitHub doesn't have Issue pages for forks).
 
-Below you'll find how to setup the BOT yourself, though it might be incomplete to how nightbloo/nb3bot has it, so I would recommend using that.
+Below you'll find how to setup the BOT yourself, though it might be incomplete to how [nightbloo/nb3bot](https://github.com/nightbloo/nb3bot) has it, so I would recommend using that.
 
 # Getting started
 Couple of steps to get started and getting it working:
@@ -43,11 +43,6 @@ REDIS_HOST=foo       # [OPTIONAL] Host for Redis database, if not defined then d
 REDIS_PASSWORD=bar   # [OPTIONAL] Password for Redis database, if not defined then defaults to empty string.
 REDIS_FAMILY=number  # [OPTIONAL] Family for Redis database (ip4 or ip6), if not defined then defaults to 4.
 REDIS_DB=number      # [OPTIONAL] Redis database to access, if not defined then defaults to 0.
-
-# Twitch Credentials
-TWITCH_CLIENT_ID=foo       # Twitch Client ID
-TWITCH_CLIENT_SECRET=bar   # Twitch Secret ID
-TWITCH_REDIRECT_URL=string # Twitch Redirect URL
 
 # Image Removal
 IMGTIME=number               # [OPTIONAL] Number for image removal (in seconds), if less than 0 then it's disabled. Default is 15

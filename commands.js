@@ -28,8 +28,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('Hi There, @' + utils.getUserUsername());
                 }
             }
-        )
-        ,
+        ),
         new Command('song', ['song'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -37,8 +36,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' The current song is ' + utils.getMediaName() + ', the link is ' + utils.currentMediaPermaLink);
             }
-        )
-        ,
+        ),
         // No cooldown because no messages no need to cool this down
         new Command('props', ['props'], 0, [], [],
             /**
@@ -47,8 +45,7 @@ function regCommands(commandManager) {
             function (utils) {
                 doProps(utils, commandManager);
             }
-        )
-        ,
+        ),
         new Command('eta', ['eta'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -57,8 +54,7 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' In order to get the ETA Timer, please download the DubX Extension from https://dubx.net/');
                 utils.bot.sendChat('https://i.imgur.com/ldj2jqf.png');
             }
-        )
-        ,
+        ),
         new Command('myprops', ['myprops'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -77,8 +73,7 @@ function regCommands(commandManager) {
                     }
                 });
             }
-        )
-        ,
+        ),
         new Command('rules', ['rules'], 0.5, [], [],
             /**
              * @param {MessageUtils} utils
@@ -86,8 +81,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/v1ZfB');
             }
-        )
-        ,
+        ),
         new Command('dubx', ['dubx'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -96,8 +90,7 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' you can download DubX at https://www.dubx.net');
                 utils.bot.sendChat('Follow this guide to help you install DubX! https://git.io/vzCVn');
             }
-        )
-        ,
+        ),
         new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -106,8 +99,7 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' you can download _give dem emotes_ at https://gde.netux.ml');
                 utils.bot.sendChat('*Note:* Put your mouse over button to see instructions');
             }
-        )
-        ,
+        ),
         new Command('css', ['css'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -115,8 +107,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Fancy CSS! https://imgur.com/a/MuolQ');
             }
-        )
-        ,
+        ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -159,8 +150,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat(utils.getTargetName(2) + ' ' + bgUrl + "'s BGs: " + bgLinks[bgUrl]);
                 }
             }
-        )
-        ,
+        ),
         new Command('queue', ['queue'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -168,8 +158,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' How to Queue a Song: https://imgur.com/a/FghLg');
             }
-        )
-        ,
+        ),
         new Command('ping', ['ping'], 0.5, [], [],
             /**
              * @param {MessageUtils} utils
@@ -177,8 +166,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' pong!');
             }
-        )
-        ,
+        ),
         new Command('pong', ['pong'], 0.5, [], [],
             /**
              * @param {MessageUtils} utils
@@ -186,8 +174,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ping!');
             }
-        )
-        ,
+        ),
         new Command('english', ['english', 'eng'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -195,8 +182,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Please stick to English in this room, doing otherwise will result in a mute.');
             }
-        )
-        ,
+        ),
         new Command('shush', ['shush', 'sush', 'noskip', 'noskiperino'], 1, ['vip'], [],
             /**
              * @param {MessageUtils} utils
@@ -204,8 +190,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' ' + getShushMessage());
             }
-        )
-        ,
+        ),
         new Command('videocheck', ['videocheck'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -217,8 +202,7 @@ function regCommands(commandManager) {
                 }
                 utils.bot.sendChat(utils.getTargetName() + ' ' + message);
             }
-        )
-        ,
+        ),
         new Command('lovepercentage', ['lovepercent', 'love%', 'lovepercentage'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -264,8 +248,7 @@ function regCommands(commandManager) {
                     seedrandom.resetGlobal();
                 }
             }
-        )
-        ,
+        ),
         // Mod command only no cooldown needed : require mute
         new Command('mute', ['mute'], 0, [], ['mute'],
             /**
@@ -274,8 +257,7 @@ function regCommands(commandManager) {
             function (utils) {
                 processAndDoPunish(utils, 'mute');
             }
-        )
-        ,
+        ),
         // Mod command only no cooldown needed : require mute
         new Command('timeout', ['timeout'], 0, [], ['mute'],
             /**
@@ -284,8 +266,7 @@ function regCommands(commandManager) {
             function (utils) {
                 processAndDoPunish(utils, 'timeout');
             }
-        )
-        ,
+        ),
         // Mod command only no cooldown needed : require mute
         new Command('ban', ['ban'], 0, [], ['ban'],
             /**
@@ -294,8 +275,7 @@ function regCommands(commandManager) {
             function (utils) {
                 processAndDoPunish(utils, 'ban');
             }
-        )
-        ,
+        ),
         new Command('lastplayed', ['lastplayed', 'history'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -317,8 +297,7 @@ function regCommands(commandManager) {
                     }
                 });
             }
-        )
-        ,
+        ),
         new Command('commands', ['commands'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -326,8 +305,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
             }
-        )
-        ,
+        ),
         new Command('setcd', ['setcd', 'setcooldown', 'cooldown'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -344,8 +322,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set cooldown to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
             }
-        )
-        ,
+        ),
         new Command('setimgtime', ['setimgtime', 'setimagetime', 'imagetime'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -362,8 +339,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
             }
-        )
-        ,
+        ),
         new Command('imgdubsamount', ['setimgdubsamount', 'imgdubsamount', 'imagedubsamount'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -380,8 +356,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set the amount of dubs for images to ' + input);
                 }
             }
-        )
-        ,
+        ),
         new Command('imgremovemutetime', ['setimageremovemutetime', 'imgremovemutetime', 'imageremovemutetime'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -398,8 +373,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for not meeting the required amount of dubs.');
                 }
             }
-        )
-        ,
+        ),
         new Command('skip', ['skip'], 0, [], [],
             /**
              * @param {MessageUtils} utils
@@ -408,8 +382,7 @@ function regCommands(commandManager) {
                 utils.bot.moderateDeleteChat(utils.getId());
                 utils.timeMuteUser(5, '@' + utils.getUserUsername() + ' ' + getShushMessage());
             }
-        )
-        ,
+        ),
         new Command('clear', ['clear', 'laggy'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -417,8 +390,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' You can clear you chat if it gets too laggy. https://i.imgur.com/D1T64mP.gif');
             }
-        )
-        ,
+        ),
         new Command('androidapp', ['android', 'androidapp', 'androidapk'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -426,8 +398,7 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Unofficial Android app (sorry iOS users) for Dubtrack: https://play.google.com/store/apps/details?id=co.mar974.dubtrackfm. Thank mar974 :D');
             }
-        )
-        ,
+        ),
         new Command('catfact', ['catfact', 'catfacts'], 1, ['resident-dj'], [],
             /**
              * @param {MessageUtils} utils
@@ -459,8 +430,7 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' Anime List: https://goo.gl/d4lvua');
                 utils.bot.sendChat('Never_Pause also recommends his animelist: https://goo.gl/h6OoW3');
             }
-        )
-        ,
+        ),
         new Command('cookie', ['cookie', 'givecookie'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -490,8 +460,7 @@ function regCommands(commandManager) {
                 }
                 utils.bot.sendChat('@' + target.username + ' ' + utils.getUserUsername() + ' gave you a/an ' + cookie.name + ' ' + cookie.emote);
             }
-        )
-        ,
+        ),
         new Command('banphraseignorespaces', ['setbanphraseignorespaces', 'banphraseignorespaces', 'setbanphrasesignorespaces', 'banphrasesignorespaces'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -506,8 +475,7 @@ function regCommands(commandManager) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(input);
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(input));
             }
-        )
-        ,
+        ),
         new Command('set_banphraseignorespaces', ['setspaces', 'setspace'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -516,8 +484,7 @@ function regCommands(commandManager) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(true);
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(true));
             }
-        )
-        ,
+        ),
         new Command('unset_banphraseignorespaces', ['unsetspaces', 'unsetspace'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -526,8 +493,7 @@ function regCommands(commandManager) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(false);
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(false));
             }
-        )
-        ,
+        ),
         new Command('roulette_start', ['roulette', 'roullete'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -606,8 +572,7 @@ function regCommands(commandManager) {
                     console.log('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' seconds. Price: ' + price + ' props.');
                 });
             }
-        )
-        ,
+        ),
         new Command('roulette_join', ['join', 'roulettejoin', 'roulletejoin', 'roulette_join', 'roullete_join', 'joinroulette', 'joinroullete', 'join_roulette', 'join_roullete'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -633,8 +598,7 @@ function regCommands(commandManager) {
                     utils.rouletteManager.addUser(utils.getUser().id);
                 }.bind(this));
             }
-        )
-        ,
+        ),
         new Command('roulette_stop', ['stoproulette', 'roulettestop', 'roulette_stop', 'stop_roulette'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -648,8 +612,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('Hold your typing! ' + utils.getUserUsername() + ' *stopped the roulette*.');
                 }
             }
-        )
-        ,
+        ),
         new Command('roulette_check', ['checkroulette', 'roulettecheck', 'roulette_check', 'check_roulette'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -668,8 +631,7 @@ function regCommands(commandManager) {
                     }
                 });
             }
-        )
-        ,
+        ),
         new Command('move_to', ['move', 'moveto', 'move_to'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
@@ -711,8 +673,7 @@ function regCommands(commandManager) {
                     utils.bot.sendChat('@' + user.username + ' you got moved to spot #' + spot + ' in queue.');
                 });
             }
-        )
-        ,
+        ),
         new Command('export_youtube', ['export', 'exportyoutube', 'exportyt', 'exporttoyoutube', 'exporttoyt'], 1, [], [],
             /**
              * @param {MessageUtils} utils

@@ -318,15 +318,15 @@ function regCommands(commandManager) {
                 });
             }
         )
-        /*, TODO: Make wiki page to commands and change this
+        ,
         new Command('commands', ['commands'], 1, [], [],
             /**
              * @param {MessageUtils} utils
-             *//*
+             */
             function (utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/{LUL}');
+                utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
             }
-        )*/
+        )
         ,
         new Command('setcd', ['setcd', 'setcooldown', 'cooldown'], 0, ['mod'], [],
             /**

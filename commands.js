@@ -450,35 +450,7 @@ function regCommands(commandManager) {
                     }
                 );
             }
-        )
-        ,
-        new Command('nb3fact', ['nb3fact', 'nb3facts'], 1, ['resident-dj'], [],
-            /**
-             * @param {MessageUtils} utils
-             * @param {Function} dontSetCooldown
-             */
-            function (utils, dontSetCooldown) {
-                requestCatFact(
-                    dontSetCooldown,
-                    function () {
-                        utils.bot.sendChat(utils.getTargetName() + ' no nb3 facts found :(');
-                    },
-                    function (fact) {
-                        fact = fact
-                        .replace(/cat|feline/gi, 'Nightblue')
-                        .replace(/lion/gi, 'Big Nightblue');
-                        var waysOfSayingIt = [
-                            '%u NB3 fact: %f.',
-                            '%u Did you know: %f?',
-                            '%u Have you heard? %f.'
-                        ];
-                        waysOfSayingIt = waysOfSayingIt[Math.dice(waysOfSayingIt.length)];
-                        utils.bot.sendChat(waysOfSayingIt.replace('%u', utils.getTargetName()).replace('%f', fact));
-                    }
-                );
-            }
-        )
-        ,
+        ),
         new Command('animelist', ['anime', 'animes', 'animelist'], 1, [], [],
             /**
              * @param {MessageUtils} utils

@@ -62,7 +62,7 @@ var commandManager = new CommandManager();
 
 var startTime = Date.now();
 
-console.log('> Starting DubAPI...');
+console.info('> Starting DubAPI...');
 
 new DubAPI({
         username: process.env.DT_LOGIN,
@@ -94,13 +94,13 @@ new DubAPI({
             return console.error(err);
         }
 
-        console.log("> NightBlueBot");
-        console.log("> DEVELOPED BY DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM");
+        console.info("> KappaCave-BOT");
+        console.info("> DEVELOPED BY DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM");
 
         // reset roulette, for debugging only
         if(process.env.ROULETTE_RESET) {
             redisManager.setLastRouletteTimestamp(true);
-            console.log('> ROULETTE RESETED.');
+            console.info('> ROULETTE RESETED.');
         }
 
         function connect() {
@@ -108,11 +108,11 @@ new DubAPI({
         }
 
         bot.on('connected', function (name) {
-            console.log('> Connected to ' + name);
+            console.info('> Connected to ' + name);
         });
 
         bot.on('disconnected', function (name) {
-            console.log('> Disconnected from ' + name);
+            console.info('> Disconnected from ' + name);
             setTimeout(connect, 15000);
         });
 

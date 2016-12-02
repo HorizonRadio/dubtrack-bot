@@ -353,13 +353,13 @@ function regCommands(commandManager) {
             function (utils) {
                 if (utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgTime();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current image removal time is of ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current image removal time is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if (!isNaN(input)) {
                     utils.settingsManager.setImgTime(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' minute' + (input === 1 ? '' : 's') + '.');
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
             }
         )

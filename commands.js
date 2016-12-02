@@ -720,6 +720,14 @@ function regCommands(commandManager) {
                     command
                 );
             }
+        ),
+        new Command('discord', ['discordserver', 'discord'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function (utils) {
+                utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord server: https://discord.gg/tQgSvdq');
+            }
         )
     ].forEach(function (command) {
             var ret = commandManager.addCommand(command);

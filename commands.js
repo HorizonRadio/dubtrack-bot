@@ -1,11 +1,8 @@
-// Random seeds
-var seedrandom = require('seed-random');
-// Time formatting
-var moment = require('moment');
-// Request
-var httpsReq = require('https').request;
-// Cookie command
-var cookieDisplay = require('./cookies.json');
+var seedrandom = require('seed-random'); // Random seeds (duh)
+var moment = require('moment'); // Time formatting
+var httpsReq = require('https').request; // Request
+var cookieDisplay = require('./cookies.json'); // Cookie command
+const util = require('util'); // Utils
 
 function regCommands(commandManager) {
     var Command = commandManager.Command;
@@ -111,44 +108,37 @@ function regCommands(commandManager) {
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],
             /**
              * @param {MessageUtils} utils
+             * @param {Command} command
              */
-            function (utils) {
-                var bgLinks = {
-                    'Snaky': 'https://imgur.com/a/iQ8rh',
-                    'Maskinen': 'https://imgur.com/a/P2Y8e',
-                    'Netux': 'https://imgur.com/a/j6QbM',
-                    'Frosolf': 'https://imgur.com/a/NZvz1 & https://goo.gl/sqfesS (only anime)',
-                    'SiilerBloo': 'https://imgur.com/a/oZKQ3',
-                    'Pikachu': 'https://imgur.com/a/75R64',
-                    'Jagex': 'https://imgur.com/a/swXWN & https://imgur.com/a/rR38y',
-                    'DingoTheMagic': 'https://imgur.com/a/DAaYw',
-                    'TickingTime': 'https://imgur.com/a/jWhjX',
-                    'ItsClutch': 'https://imgur.com/a/EixZ2',
-                    'Alexrerder': 'http://goo.gl/o06VPP'
-                };
-
-                if (!utils.getCommandArguments()[0]) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I have background lists from ' + Object.keys(bgLinks).join(', '));
-                    utils.bot.sendChat('Do !background <from>' + ' to get the link.');
-                    return;
-                }
-
-                function checkIfSpecify() {
-                    var r = null;
-                    Object.keys(bgLinks).forEach(function (name) {
-                        if (name.toLowerCase() === utils.getCommandArguments()[0].toLowerCase()) {
-                            r = name;
+            function (utils, command) {
+                doListCommand({
+                        showListMessage: 'I have background lists from: %s or room',
+                        showListArgumentName: 'from',
+                        showSelectedMessage: '%s\'s BGs: ',
+                        list: {
+                            'Snaky': 'https://imgur.com/a/iQ8rh',
+                            'Maskinen': 'https://imgur.com/a/P2Y8e',
+                            'Netux': 'https://imgur.com/a/j6QbM',
+                            'Frosolf': 'https://imgur.com/a/NZvz1 & https://goo.gl/sqfesS (only anime)',
+                            'SiilerBloo': 'https://imgur.com/a/oZKQ3',
+                            'Pikachu': 'https://imgur.com/a/75R64',
+                            'Jagex': 'https://imgur.com/a/swXWN & https://imgur.com/a/rR38y',
+                            'DingoTheMagic': 'https://imgur.com/a/DAaYw',
+                            'TickingTime': 'https://imgur.com/a/jWhjX',
+                            'ItsClutch': 'https://imgur.com/a/EixZ2',
+                            'Alexrerder': 'http://goo.gl/o06VPP'
                         }
-                    });
-                    return r;
-                }
-
-                var bgUrl;
-                if (utils.getCommandArguments()[0].toLowerCase() === 'room') {
-                    utils.bot.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.bot.getRoomMeta().id + '/image');
-                } else if (bgUrl = checkIfSpecify()) {
-                    utils.bot.sendChat(utils.getTargetName(2) + ' ' + bgUrl + "'s BGs: " + bgLinks[bgUrl]);
-                }
+                    },
+                    function (selectedName) {
+                        if (selectedName.toLowerCase() !== 'room') {
+                            return;
+                        }
+                        utils.bot.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.bot.getRoomMeta().id + '/image');
+                    },
+                    undefined,
+                    utils,
+                    command
+                );
             }
         ),
         new Command('queue', ['queue'], 1, [], [],
@@ -402,9 +392,10 @@ function regCommands(commandManager) {
         new Command('catfact', ['catfact', 'catfacts'], 1, ['resident-dj'], [],
             /**
              * @param {MessageUtils} utils
+             * @param {Command} command
              * @param {Function} dontSetCooldown
              */
-            function (utils, dontSetCooldown) {
+            function (utils, command, dontSetCooldown) {
                 requestCatFact(
                     dontSetCooldown,
                     function () {
@@ -681,6 +672,54 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' How to export a playlist to YouTube: https://imgur.com/a/VVoFV');
             }
+        ),
+        new Command('streamers', ['stream', 'streams', 'streamers'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             * @param {Command} command
+             */
+            function (utils, command) {
+                function fetchStreamerAndSendMessage(user, channel) {
+                    utils.twitchManager.getStream(channel, function (err, body) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        var stream = body.stream;
+                        if (stream) {
+                            utils.bot.sendChat(user + ' is currently *Steaming* ' + stream.channel.url);
+
+                        }
+                        else {
+                            utils.bot.sendChat(user + ' is currently *Offline* https://www.twitch.tv/' + channel.toLowerCase());
+                        }
+
+                    });
+                }
+
+                doListCommand({
+                        showListMessage: 'Pick a streamer from the list: %s or ALL (resident-dj+)',
+                        showListArgumentName: 'streamer',
+                        list: {
+                            'Snaky': 'Snaky2610',
+                            'Frosolf': 'frosolf',
+                            'The_kineese': 'the_kineese'
+                        },
+                    },
+                    function (selectedName, list) {
+                        if (selectedName.toLowerCase() !== 'all' || !utils.botUtils.checkRole(utils.getUser(), 'resident-dj')) {
+                            return;
+                        }
+
+                        Object.keys(list).forEach(function (user) {
+                            // Ohh the spam
+                            fetchStreamerAndSendMessage(user, list[user]);
+                        });
+                    },
+                    fetchStreamerAndSendMessage,
+                    utils,
+                    command
+                );
+            }
         )
     ].forEach(function (command) {
             var ret = commandManager.addCommand(command);
@@ -743,6 +782,37 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
             cb(result);
         }
     });
+}
+
+function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, command) {
+    if (!utils.getCommandArguments()[0]) {
+        utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format(listInfo.showListMessage, Object.keys(listInfo.list).join(', ')));
+        utils.bot.sendChat('Do `!' + command.names[0] + ' <' + listInfo.showListArgumentName + '>' + '` to get the link.');
+        return;
+    }
+
+    function checkIfSpecify() {
+        var result = null;
+        Object.keys(listInfo.list).forEach(function (key) {
+            if (key.toLowerCase() === utils.getCommandArguments()[0].toLowerCase()) {
+                result = key;
+            }
+        });
+        return result;
+    }
+
+    var selected;
+    if (selected = checkIfSpecify()) {
+        if (typeof showSelectedFunk === 'function') {
+            showSelectedFunk(selected, listInfo.list[selected], listInfo.list);
+        } else {
+            utils.bot.sendChat(utils.getTargetName(2) + ' ' + util.format(listInfo.showSelectedMessage, selected) + listInfo.list[selected]);
+        }
+    } else {
+        if (typeof showNotFoundFunk === 'function') {
+            showNotFoundFunk(utils.getCommandArguments()[0], listInfo.list);
+        }
+    }
 }
 
 function doProps(utils, commandManager) {

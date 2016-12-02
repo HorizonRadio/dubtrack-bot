@@ -44,6 +44,10 @@ REDIS_PASSWORD=bar   # [OPTIONAL] Password for Redis database, if not defined th
 REDIS_FAMILY=number  # [OPTIONAL] Family for Redis database (ip4 or ip6), if not defined then defaults to 4.
 REDIS_DB=number      # [OPTIONAL] Redis database to access, if not defined then defaults to 0.
 
+# Twitch Credentials
+TWITCH_CLIENT_ID=foo       # Twitch Client ID
+TWITCH_CLIENT_SECRET=bar   # Twitch Secret ID
+
 # Image Removal
 IMGTIME=number               # [OPTIONAL] Number for image removal (in seconds), if less than 0 then it's disabled. Default is 15
 IMGREMOVALDUBS_AMOUNT=number # [OPTIONAL] Number of dubs necessary by the user to bypass instant image removal, if less than 0 then it's disabled. Default is 10.

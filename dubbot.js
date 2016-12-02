@@ -24,8 +24,8 @@
  * COMMAND LIST
  **************************************************************************
  *
- * List can be found by reading through
- * the file `commands.js`
+ * List can be found at https://git.io/v1nPT
+ * by reading through the file `commands.js`
  *
  **************************************************************************
  */

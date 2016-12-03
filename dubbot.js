@@ -96,7 +96,7 @@ new DubAPI({
         }
 
         console.info("> KappaCave-BOT");
-        console.info("> DEVELOPED BY DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM");
+        console.info("> DEVELOPED BY ANGELOIDIKAROS, DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM");
 
         // reset roulette, for debugging only
         if(process.env.ROULETTE_RESET) {

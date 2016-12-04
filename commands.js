@@ -702,7 +702,8 @@ function regCommands(commandManager) {
                         list: {
                             'Snaky': 'Snaky2610',
                             'Frosolf': 'frosolf',
-                            'The_kineese': 'the_kineese'
+                            'The_kineese': 'the_kineese',
+                            'Lord_eRazor': 'Gustavknas'
                         },
                     },
                     function (selectedName, list) {

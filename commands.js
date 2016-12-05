@@ -283,7 +283,7 @@ function regCommands(commandManager) {
                         utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song was last played ' + moment(parseInt(result)).from(Date.now()) + '.');
                     }
                     else {
-                        utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song hasn't played in the past 5 weeks. It could never have played before, is a re-upload, or a remix.');
+                        utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song has not played in the past 5 weeks. It could never have played before, is a re-upload, or a remix.');
                     }
                 });
             }

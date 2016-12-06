@@ -560,7 +560,7 @@ function regCommands(commandManager) {
                         utils.bot.sendChat('Our lucky winner is @' + utils.bot.getUser(winnerId).username + '! You\'ll be moved to spot #' + (newSpot + 1) + ' in queue (' + movedMsg + ').');
                         utils.bot.moderateMoveDJ(winnerId, newSpot);
                     });
-                    console.log('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' seconds. Price: ' + price + ' props.');
+                    console.warn('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' seconds. Price: ' + price + ' props.');
                 });
             }
         ),
@@ -682,7 +682,7 @@ function regCommands(commandManager) {
                 function fetchStreamerAndSendMessage(user, channel) {
                     utils.twitchManager.getStream(channel, function (err, body) {
                         if (err) {
-                            console.log(err);
+                            console.error(err);
                         }
                         var stream = body.stream;
                         if (stream) {

@@ -34,6 +34,7 @@
 'use strict';
 
 require('./lib/utilsLoader');
+require('./lib/discordWebhookLoader');
 var DubAPI = require('dubapi');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
@@ -63,7 +64,7 @@ var commandManager = new CommandManager();
 
 var startTime = Date.now();
 
-console.info('> Starting DubAPI...');
+console.infoFW('> Starting DubAPI...', false);
 
 new DubAPI({
         username: process.env.DT_LOGIN,
@@ -95,13 +96,13 @@ new DubAPI({
             return console.error(err);
         }
 
-        console.info("> KappaCave-BOT");
-        console.info("> DEVELOPED BY ANGELOIDIKAROS, DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM");
+        console.infoFW("> KappaCave-BOT", false);
+        console.infoFW("> DEVELOPED BY ANGELOIDIKAROS, DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM", false);
 
         // reset roulette, for debugging only
-        if(process.env.ROULETTE_RESET) {
+        if (process.env.ROULETTE_RESET) {
             redisManager.setLastRouletteTimestamp(true);
-            console.info('> ROULETTE RESETED.');
+            console.infoFW('> ROULETTE RESETED.', false);
         }
 
         function connect() {
@@ -212,7 +213,7 @@ new DubAPI({
             }
 
             // Able to use markdown
-            if(currentID && userUtils.getUserDubs(bot.getSelf()) < 10) {
+            if (currentID && userUtils.getUserDubs(bot.getSelf()) < 10) {
                 bot.updub();
             }
         });

@@ -55,6 +55,10 @@ IMGREMOVALDUBS_TIME=number   # [OPTIONAL] Number of time (in minutes) to unmute 
 
 # Banphrases
 BANPHRASES_IGNORE_SPACES=boolean # [OPTIONAL] If to make ban phrases checker ignore spaces. Default is false
+
+# Discord Webhooks
+DISCORD_WEBHOOK_URL=foo         # [OPTIONAL] URL of Webhook, found on Server Settings → Webhooks, if not defined then Discord Webhooks it's disabled
+DISCORD_WEBHOOK_INTERVAL=number # [OPTIONAL] Number of millisecond in which to send the logs. Default is 1000
 ```
 
 After doing all this you can just run ```node zubbot.js``` in your friendly neighborhood node terminal and all should be fine and dandy.

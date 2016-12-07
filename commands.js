@@ -729,6 +729,14 @@ function regCommands(commandManager) {
             function (utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
             }
+        ),
+        new Command('repository', [ 'repository', 'repo' ], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function (utils) {
+                utils.bot.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://github.com/Netox005/KappaCave-BOT');
+            }
         )
     ].forEach(function (command) {
             var ret = commandManager.addCommand(command);

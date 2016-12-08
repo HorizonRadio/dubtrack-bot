@@ -4,7 +4,6 @@
   "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on KappaCave",
   "main": "bot.js",
   "dependencies": {
-    "discord-webhooks": "^1.0.0",
     "dotenv": "1.2.0",
     "dubapi": "latest",
     "express": "^4.13.4",

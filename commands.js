@@ -609,7 +609,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                if(utils.rouletteManager.started === false) {
+                if(utils.rouletteManager.started !== false) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' a roulette is running right now, silly!');
                     return;
                 }

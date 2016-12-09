@@ -14,10 +14,10 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (Math.dice(50) === 0) {
+            function(utils) {
+                if(Math.dice(50) === 0) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' hello...');
-                    setTimeout(function () {
+                    setTimeout(function() {
                         utils.bot.sendChat('... it\'s me...');
                     }, 4500);
                 }
@@ -30,7 +30,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' The current song is ' + utils.getMediaName() + ', the link is ' + utils.currentMediaPermaLink);
             }
         ),
@@ -39,7 +39,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 doProps(utils, commandManager);
             }
         ),
@@ -47,7 +47,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' In order to get the ETA Timer, please download the DubX Extension from https://dubx.net/');
                 utils.bot.sendChat('https://i.imgur.com/ldj2jqf.png');
             }
@@ -56,11 +56,11 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                utils.redisManager.getProps(utils.getUserId(), function (result) {
-                    if (result) {
+            function(utils) {
+                utils.redisManager.getProps(utils.getUserId(), function(result) {
+                    if(result) {
                         var propss = 'prop';
-                        if (result > 1) {
+                        if(result > 1) {
                             propss += 's';
                         }
                         utils.bot.sendChat('@' + utils.getUserUsername() + ' you have ' + result + ' ' + propss + '! :)');
@@ -75,7 +75,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/v1ZfB');
             }
         ),
@@ -83,7 +83,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' you can download DubX at https://www.dubx.net');
                 utils.bot.sendChat('Follow this guide to help you install DubX! https://git.io/vzCVn');
             }
@@ -92,7 +92,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' you can download _give dem emotes_ at https://gde.netux.ml');
                 utils.bot.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
@@ -101,7 +101,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Fancy CSS! https://imgur.com/a/MuolQ');
             }
         ),
@@ -110,7 +110,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              * @param {Command} command
              */
-            function (utils, command) {
+            function(utils, command) {
                 doListCommand({
                         showListMessage: 'I have background lists from: %s or room',
                         showListArgumentName: 'from',
@@ -129,8 +129,8 @@ function regCommands(commandManager) {
                             'Alexrerder': 'http://goo.gl/o06VPP'
                         }
                     },
-                    function (selectedName) {
-                        if (selectedName.toLowerCase() !== 'room') {
+                    function(selectedName) {
+                        if(selectedName.toLowerCase() !== 'room') {
                             return;
                         }
                         utils.bot.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.bot.getRoomMeta().id + '/image');
@@ -145,7 +145,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' How to Queue a Song: https://imgur.com/a/FghLg');
             }
         ),
@@ -153,7 +153,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' pong!');
             }
         ),
@@ -161,7 +161,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ping!');
             }
         ),
@@ -169,7 +169,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Please stick to English in this room, doing otherwise will result in a mute.');
             }
         ),
@@ -177,7 +177,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' ' + getShushMessage());
             }
         ),
@@ -185,9 +185,9 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 var message = 'Check if a video is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi';
-                if (utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
+                if(utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
                     message = 'Check if current video is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi?ytid=' + utils.getMediaFkid();
                 }
                 utils.bot.sendChat(utils.getTargetName() + ' ' + message);
@@ -197,11 +197,11 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments().length > 0) {
+            function(utils) {
+                if(utils.getCommandArguments().length > 0) {
                     var username = utils.getTargetName().replace('@', '');
                     var username2 = utils.getUserUsername();
-                    if (utils.getCommandArguments().length > 1) {
+                    if(utils.getCommandArguments().length > 1) {
                         username2 = utils.getTargetName(2).replace('@', '');
                         /**
                          * @return {boolean}
@@ -210,30 +210,30 @@ function regCommands(commandManager) {
                             return foo ? !bar : bar;
                         }
 
-                        if (XOR(username.toLowerCase() == utils.getUserUsername().toLowerCase(), username2.toLowerCase() == utils.getUserUsername().toLowerCase())) {
-                            if (XOR(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase(), username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase())) {
+                        if(XOR(username.toLowerCase() == utils.getUserUsername().toLowerCase(), username2.toLowerCase() == utils.getUserUsername().toLowerCase())) {
+                            if(XOR(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase(), username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase())) {
                                 username = utils.bot.getSelf().username;
                             }
                         }
-                        else if (username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
+                        else if(username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
                             utils.bot.sendChat("@" + utils.getUserUsername() + " I love " + username + " 100%.");
                             return;
                         }
-                        else if (username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
+                        else if(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
                             utils.bot.sendChat("@" + utils.getUserUsername() + " I love " + username2 + " 100%.");
                             return;
                         }
                     }
-                    if (username.toLowerCase() == utils.getUserUsername().toLowerCase() && username2.toLowerCase() == utils.getUserUsername().toLowerCase()) {
+                    if(username.toLowerCase() == utils.getUserUsername().toLowerCase() && username2.toLowerCase() == utils.getUserUsername().toLowerCase()) {
                         utils.bot.sendChat("@" + utils.getUserUsername() + " well I don't know.... how much do you love yourself?");
                         return;
                     }
-                    else if (username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
+                    else if(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
                         utils.bot.sendChat('@' + utils.getUserUsername() + " of course I love you 100%, silly <3");
                         return;
                     }
 
-                    seedrandom(username.hashCode() + username2.hashCode(), {global: true});
+                    seedrandom(username.hashCode() + username2.hashCode(), { global: true });
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' there is ' + Math.dice(100) + '% of :nb3h: between ' + username2 + ' and ' + username);
                     seedrandom.resetGlobal();
                 }
@@ -244,7 +244,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 processAndDoPunish(utils, 'mute');
             }
         ),
@@ -253,7 +253,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 processAndDoPunish(utils, 'timeout');
             }
         ),
@@ -262,7 +262,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 processAndDoPunish(utils, 'ban');
             }
         ),
@@ -270,16 +270,16 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 var arg0 = utils.getCommandArguments()[0];
 
-                if (!arg0 && !utils.bot.getMedia()) {
+                if(!arg0 && !utils.bot.getMedia()) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' no song is playing right now.');
                     return;
                 }
 
-                utils.redisManager.getLastSongTime(arg0 || utils.getMediaFkid(), function (result) {
-                    if (result) {
+                utils.redisManager.getLastSongTime(arg0 || utils.getMediaFkid(), function(result) {
+                    if(result) {
                         utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song was last played ' + moment(parseInt(result)).from(Date.now()) + '.');
                     }
                     else {
@@ -292,7 +292,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
             }
         ),
@@ -300,14 +300,14 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments()[0] == undefined) {
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getCooldown();
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' current command cooldown is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
-                if (!isNaN(input)) {
+                if(!isNaN(input)) {
                     utils.settingsManager.setCooldown(input);
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set cooldown to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
@@ -317,14 +317,14 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments()[0] == undefined) {
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgTime();
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' current image removal time is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
-                if (!isNaN(input)) {
+                if(!isNaN(input)) {
                     utils.settingsManager.setImgTime(input);
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
@@ -334,14 +334,14 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments()[0] == undefined) {
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgDubsAmount();
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' current amount of dubs for images is of ' + output + ' dub' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
-                if (!isNaN(input)) {
+                if(!isNaN(input)) {
                     utils.settingsManager.setImgDubsAmount(input);
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' set the amount of dubs for images to ' + input);
                 }
@@ -351,14 +351,14 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments()[0] == undefined) {
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveMuteTime();
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they don\`t meet the required amount of dubs for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
-                if (!isNaN(input)) {
+                if(!isNaN(input)) {
                     utils.settingsManager.setImgRemoveMuteTime(input);
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for not meeting the required amount of dubs.');
                 }
@@ -368,7 +368,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.moderateDeleteChat(utils.getId());
                 utils.timeMuteUser(5, '@' + utils.getUserUsername() + ' ' + getShushMessage());
             }
@@ -377,7 +377,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' You can clear you chat if it gets too laggy. https://i.imgur.com/D1T64mP.gif');
             }
         ),
@@ -385,7 +385,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Unofficial Android app (sorry iOS users) for Dubtrack: https://play.google.com/store/apps/details?id=co.mar974.dubtrackfm | Thank mar974 :D');
             }
         ),
@@ -395,13 +395,13 @@ function regCommands(commandManager) {
              * @param {Command} command
              * @param {Function} dontSetCooldown
              */
-            function (utils, command, dontSetCooldown) {
+            function(utils, command, dontSetCooldown) {
                 requestCatFact(
                     dontSetCooldown,
-                    function () {
+                    function() {
                         utils.bot.sendChat(utils.getTargetName() + ' no cat facts found :(');
                     },
-                    function (fact) {
+                    function(fact) {
                         var waysOfSayingIt = [
                             '%u Cat fact: %f.',
                             '%u Did you know: %f?',
@@ -417,7 +417,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Anime List: https://goo.gl/d4lvua');
                 utils.bot.sendChat('Never_Pause also recommends his animelist: https://goo.gl/h6OoW3');
             }
@@ -426,26 +426,26 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments().length < 2) {
+            function(utils) {
+                if(utils.getCommandArguments().length < 2) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' cookies on display: ' + Object.keys(cookieDisplay).join(', '));
                     return;
                 }
                 var cookie = cookieDisplay[utils.getCommandArguments()[0].toLowerCase()];
-                if (!cookie) {
+                if(!cookie) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' I don\'t have that cookie on display.');
                     return;
                 }
                 var target = utils.bot.getUserByName(utils.getTargetName(2, true));
-                if (!target) {
+                if(!target) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' I would give them the cookie but they seem to not be here.');
                     return;
                 }
-                if (target.id === utils.getUserId()) {
+                if(target.id === utils.getUserId()) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' don\'t you already have the cookie? Just eat it!');
                     return;
                 }
-                if (target.id === utils.bot.getSelf().id) {
+                if(target.id === utils.bot.getSelf().id) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' for me :nb3Happy:? Thank you! I\'ll eat this ' + cookie.name + ' now if you don\'t mind :rawrrCookie:');
                     return;
                 }
@@ -456,8 +456,8 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.getCommandArguments()[0] == undefined) {
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveMuteTime();
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' checking for ban phrases is ' + (utils.settingsManager.getBanPhrasesIgnoreSpaces() ? '*not*' : '') + ' ignoring spaces.');
                     return 1;
@@ -471,7 +471,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(true);
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(true));
             }
@@ -480,7 +480,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(false);
                 utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(false));
             }
@@ -489,50 +489,50 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.rouletteManager.started !== false) {
+            function(utils) {
+                if(utils.rouletteManager.started !== false) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' did you forget the "join" part? There is a roulette running right now!');
                     return;
                 }
-                utils.redisManager.getLastRouletteTimestamp(function (last) {
+                utils.redisManager.getLastGameTimestamp('roulette', function(last) {
                     {
                         var now = Date.now(), cooldown = utils.settingsManager.getRouletteCooldown();
-                        if (last >= 0 && (now - last) < cooldown) {
+                        if(last >= 0 && (now - last) < cooldown) {
                             utils.bot.sendChat('@' + utils.getUserUsername() + ' hold on! Last roulette was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the roulette again.');
                             return;
                         }
                     }
                     {
                         var queue = utils.bot.getQueue();
-                        if (queue.length <= 1) {
+                        if(queue.length <= 1) {
                             utils.bot.sendChat('@' + utils.getUserUsername() + ' wow what?! I don\'t see users in queue' + (queue.length === 1 ? ', only that ' + queue[0].user.username + ' guy' : '') + '.');
                             return;
                         }
                     }
                     var duration = utils.settingsManager.getRouletteDuration();
-                    if (utils.getCommandArguments()[0]) {
+                    if(utils.getCommandArguments()[0]) {
                         duration = parseInt(utils.getCommandArguments()[0]);
-                        if (isNaN(duration)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem to be a number.');
+                        if(isNaN(duration)) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
 
                     var price = utils.settingsManager.getRoulettePrice();
-                    if (utils.getCommandArguments()[1]) {
+                    if(utils.getCommandArguments()[1]) {
                         price = parseInt(utils.getCommandArguments()[1]);
-                        if (isNaN(price)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that price you gave me doesn\'t seem to be a number.');
+                        if(isNaN(price)) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that price you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
 
-                    utils.bot.sendChat('*Roulette is starting!* Use `!join` or `!roulettejoin` to join in!');
-                    utils.bot.sendChat('Ends in _' + duration + ' seconds_. | Price to join is of _' + price + ' prop' + (price !== 1 ? 's' : '') + '_.');
-                    utils.rouletteManager.start(duration, price, function (error, winnerId, oldSpot, newSpot) {
-                        if (error) {
+                    utils.bot.sendChat('*Roulette is starting!* Use `!join` to join in!');
+                    utils.bot.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Price to join is of _' + price + ' prop' + (price !== 1 ? 's' : '') + '_.');
+                    utils.rouletteManager.start(duration, price, function(error, winnerId, oldSpot, newSpot) {
+                        if(error) {
                             utils.bot.sendChat('aaaaand *the rou*-- wait.');
-                            switch (error) {
+                            switch(error) {
                                 default:
                                     utils.bot.sendChat('Uh oh, something happened! They didn\'t tell me what, but it did something to this roulette.');
                                     break;
@@ -550,7 +550,7 @@ function regCommands(commandManager) {
                         }
 
                         var movedMsg = Math.abs(oldSpot - newSpot);
-                        if (oldSpot === newSpot) {
+                        if(oldSpot === newSpot) {
                             movedMsg = 'same as before :confused:';
                         } else {
                             movedMsg += ' spot' + (movedMsg !== 1 ? 's' : '') + ' ' + (oldSpot > newSpot ? 'above! :nb3Boosted:' : 'below :frowning:');
@@ -560,29 +560,29 @@ function regCommands(commandManager) {
                         utils.bot.sendChat('Our lucky winner is @' + utils.bot.getUser(winnerId).username + '! You\'ll be moved to spot #' + (newSpot + 1) + ' in queue (' + movedMsg + ').');
                         utils.bot.moderateMoveDJ(winnerId, newSpot);
                     });
-                    console.warn('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' seconds. Price: ' + price + ' props.');
+                    console.warn('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' second(s). Price: ' + price + ' prop(s).');
                 });
             }
         ),
-        new Command('roulette_join', ['join', 'roulettejoin', 'roulletejoin', 'roulette_join', 'roullete_join', 'joinroulette', 'joinroullete', 'join_roulette', 'join_roullete'], 1, [], [],
+        new Command('roulette_join', ['join', 'roulettejoin'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.rouletteManager.started === false) {
+            function(utils) {
+                if(utils.rouletteManager.started === false) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
                     return;
                 }
-                if (utils.bot.getQueuePosition(utils.getUserId()) === -1) {
+                if(utils.bot.getQueuePosition(utils.getUserId()) === -1) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' you are not in queue!');
                     return;
                 }
-                if (utils.rouletteManager.listedUsers.indexOf(utils.getUserId()) >= 0) {
+                if(utils.rouletteManager.listedUsers.indexOf(utils.getUserId()) >= 0) {
                     return;
                 }
-                utils.redisManager.getProps(utils.getUserId(), function (propsCount) {
-                    if (typeof propsCount === 'undefined' || isNaN(propsCount)) propsCount = 0;
-                    if (propsCount < utils.rouletteManager.currentPrice) {
+                utils.redisManager.getProps(utils.getUserId(), function(propsCount) {
+                    if(typeof propsCount === 'undefined' || isNaN(propsCount)) propsCount = 0;
+                    if(propsCount < utils.rouletteManager.currentPrice) {
                         utils.bot.sendChat('@' + utils.getUserUsername() + ' you\'re low in props! Sorry :S');
                         return;
                     }
@@ -590,35 +590,35 @@ function regCommands(commandManager) {
                 }.bind(this));
             }
         ),
-        new Command('roulette_stop', ['stoproulette', 'roulettestop', 'roulette_stop', 'stop_roulette'], 1, [], [],
+        new Command('roulette_stop', ['roulettestop', 'roulette_stop'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (!utils.rouletteManager.started) {
+            function(utils) {
+                if(utils.rouletteManager.started === false) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
                     return;
                 }
-                if (utils.rouletteManager.forceStop()) {
+                if(utils.rouletteManager.forceStop()) {
                     utils.bot.sendChat('Hold your typing! ' + utils.getUserUsername() + ' *stopped the roulette*.');
                 }
             }
         ),
-        new Command('roulette_check', ['checkroulette', 'roulettecheck', 'roulette_check', 'check_roulette'], 0, ['mod'], [],
+        new Command('roulette_check', ['roulettecheck', 'roulette_check'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
-                if (utils.rouletteManager.started !== false) {
+            function(utils) {
+                if(utils.rouletteManager.started === false) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' a roulette is running right now, silly!');
                     return;
                 }
-                utils.redisManager.getLastRouletteTimestamp(function (last) {
+                utils.redisManager.getLastGameTimestamp('roulette', function(last) {
                     var now = Date.now(), cooldown = utils.settingsManager.getRouletteCooldown();
-                    if (last >= 0 && (now - last) < cooldown) {
+                    if(last >= 0 && (now - last) < cooldown) {
                         utils.bot.sendChat('@' + utils.getUserUsername() + ' last roulette was ' + moment(last).fromNow() + '. You will be able to run a roulette in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
                     } else {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' more than an hour has passed, go ahead to run that command!')
+                        utils.bot.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
                     }
                 });
             }
@@ -627,40 +627,40 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 var user = utils.getTargetName(1, true),
                     spot = utils.getCommandArguments()[1];
-                if (!user) {
+                if(!user) {
                     return;
                 }
-                if (!spot) {
+                if(!spot) {
                     spot = user;
                     user = utils.getUserUsername();
                 }
-                if (isNaN(spot = parseInt(spot))) {
+                if(isNaN(spot = parseInt(spot))) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' spot doesn\'t seem like a number.');
                     return;
                 }
                 {
                     var queue = utils.bot.getQueue();
-                    if (spot >= queue.length) {
+                    if(spot >= queue.length) {
                         spot = queue.length;
-                    } else if (spot <= 0) {
+                    } else if(spot <= 0) {
                         spot = 1;
                     }
                 }
                 {
                     var username = user;
-                    if (!(user = utils.bot.getUserByName(username, true))) {
+                    if(!(user = utils.bot.getUserByName(username, true))) {
                         utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + username + ' is not online.');
                         return;
                     }
                 }
-                if (utils.bot.getQueuePosition(user.id) === spot - 1) {
+                if(utils.bot.getQueuePosition(user.id) === spot - 1) {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + (utils.getUserId() === user.id ? 'you are' : 'user') + ' already on that spot!');
                     return;
                 }
-                utils.bot.moderateMoveDJ(user.id, spot - 1, function () {
+                utils.bot.moderateMoveDJ(user.id, spot - 1, function() {
                     utils.bot.sendChat('@' + user.username + ' you got moved to spot #' + spot + ' in queue.');
                 });
             }
@@ -669,7 +669,7 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' How to export a playlist to YouTube: https://imgur.com/a/VVoFV');
             }
         ),
@@ -678,14 +678,14 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              * @param {Command} command
              */
-            function (utils, command) {
+            function(utils, command) {
                 function fetchStreamerAndSendMessage(user, channel) {
-                    utils.twitchManager.getStream(channel, function (err, body) {
-                        if (err) {
+                    utils.twitchManager.getStream(channel, function(err, body) {
+                        if(err) {
                             console.error(err);
                         }
                         var stream = body.stream;
-                        if (stream) {
+                        if(stream) {
                             utils.bot.sendChat(user + ' is currently *Steaming* ' + stream.channel.url);
 
                         }
@@ -706,12 +706,12 @@ function regCommands(commandManager) {
                             'Lord_eRazor': 'Gustavknas'
                         },
                     },
-                    function (selectedName, list) {
-                        if (selectedName.toLowerCase() !== 'all' || !utils.botUtils.checkRole(utils.getUser(), 'resident-dj')) {
+                    function(selectedName, list) {
+                        if(selectedName.toLowerCase() !== 'all' || !utils.botUtils.checkRole(utils.getUser(), 'resident-dj')) {
                             return;
                         }
 
-                        Object.keys(list).forEach(function (user) {
+                        Object.keys(list).forEach(function(user) {
                             // Ohh the spam
                             fetchStreamerAndSendMessage(user, list[user]);
                         });
@@ -726,21 +726,132 @@ function regCommands(commandManager) {
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
             }
         ),
-        new Command('repository', [ 'repository', 'repo' ], 1, [], [],
+        new Command('repository', ['repository', 'repo'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
-            function (utils) {
+            function(utils) {
                 utils.bot.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://github.com/Netox005/KappaCave-BOT');
             }
+        ),
+        new Command('scramble_start', ['scramble', 'scrambleword', 'scrable_start'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.scrambleManager.started !== false) {
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m running a scramble right now!');
+                    return;
+                }
+                utils.redisManager.getLastGameTimestamp('scramble', function(last) {
+                    {
+                        var now = Date.now(), cooldown = utils.settingsManager.getScrambleCooldown();
+                        if(last >= 0 && (now - last) < cooldown) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' hold on! Last scramble was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the scramble again.');
+                            return;
+                        }
+                    }
+                    var duration = utils.settingsManager.getScrambleDuration();
+                    if(utils.getCommandArguments()[0]) {
+                        duration = parseInt(utils.getCommandArguments()[0]);
+                        if(isNaN(duration)) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
+                            return;
+                        }
+                    }
+                    var reward = utils.settingsManager.getScrambleReward();
+                    if(utils.getCommandArguments()[1]) {
+                        reward = parseInt(utils.getCommandArguments()[1]);
+                        if(isNaN(reward)) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' the reward amount you gave me doesn\'t seem like a number.');
+                            return;
+                        }
+                    }
+                    var wordLength = Math.dice(4, 8);
+                    if(utils.getCommandArguments()[2]) {
+                        wordLength = parseInt(utils.getCommandArguments()[2]);
+                        if(isNaN(wordLength)) {
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' the word length you gave me doesn\'t seem like a number.');
+                            return;
+                        } else if(wordLength < 3) {
+                            wordLength = 3;
+                        } else if(wordLength > 20) {
+                            wordLength = 20;
+                        }
+                    }
+
+                    utils.scrambleManager.start({
+                        duration,
+                        reward,
+                        wordLength
+                    }, function(scrambledWord) {
+                        utils.bot.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
+                        utils.bot.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
+                    }, function(word) {
+                        utils.bot.sendChat('*Scramble ended!* The word was _' + word + '_');
+                    });
+                    console.warn('Scramble started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' second(s). Reward: ' + reward + ' prop(s).');
+                });
+            }
+        ),
+        new Command('scramble_guess', ['guess', 'descramble', 'unscramble', 'scrambleguess', 'scramble_guess'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.scrambleManager.started === false) {
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
+                    return;
+                }
+                var guess = utils.getCommandArguments()[0];
+                if(!guess) {
+                    return;
+                }
+                if(utils.scrambleManager.guess(utils.getUserId(), guess)) {
+                    utils.bot.sendChat('*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _' + utils.scrambleManager.word + '_.');
+                }
+            }
+        ),
+        new Command('scramble_stop', ['scramblestop', 'scramble_stop'], 0, ['mod'], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.scrambleManager.started === false) {
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
+                    return;
+                }
+                if(utils.scrambleManager.forceStop()) {
+                    utils.bot.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*.');
+                }
+            }
+        ),
+        new Command('scramble_check', ['scramblecheck', 'scramble_check'], 0, ['mod'], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.scrambleManager.started !== false) {
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' a scramble is running right now, silly!');
+                    return;
+                }
+                utils.redisManager.getLastGameTimestamp('scramble', function(last) {
+                    var now = Date.now(), cooldown = utils.settingsManager.getScrambleCooldown();
+                    if(last >= 0 && (now - last) < cooldown) {
+                        utils.bot.sendChat('@' + utils.getUserUsername() + ' last scramble was ' + moment(last).fromNow() + '. You will be able to run a scramble in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
+                    } else {
+                        utils.bot.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
+                    }
+                });
+            }
         )
-    ].forEach(function (command) {
+    ].forEach(function(command) {
             var ret = commandManager.addCommand(command);
-            if (!ret) {
+            if(!ret) {
                 console.error('Command failed to be added, Command:' + command.id);
             }
         }
@@ -751,7 +862,7 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
     var requestsCount = 0;
 
     function doSo(_cb) {
-        if (requestsCount > 5) {
+        if(requestsCount > 5) {
             dontSetCooldown();
             return;
         }
@@ -763,26 +874,26 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
             hostname: 'catfacts-api.appspot.com',
             path: '/api/facts',
             method: 'GET'
-        }, function (res) {
+        }, function(res) {
             var data = '';
             res.setEncoding('utf8');
-            res.on('data', function (chunk) {
+            res.on('data', function(chunk) {
                 data += chunk;
             });
-            res.on('error', function (x) {
+            res.on('error', function(x) {
                 noFacts();
                 console.error(x);
             });
-            res.on('end', function () {
+            res.on('end', function() {
                 try {
                     data = JSON.parse(data);
                 }
-                catch (x) {
+                catch(x) {
                     noFacts();
                 }
 
                 // Fact too long. To avoid spam request a new one and call _cb.
-                if (data.facts[0].length > 125) {
+                if(data.facts[0].length > 125) {
                     doSo(_cb);
                     _cb(false);
                     return;
@@ -794,15 +905,15 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
         }).end();
     }
 
-    doSo(function (result) {
-        if (result !== false) {
+    doSo(function(result) {
+        if(result !== false) {
             cb(result);
         }
     });
 }
 
 function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, command) {
-    if (!utils.getCommandArguments()[0]) {
+    if(!utils.getCommandArguments()[0]) {
         utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format(listInfo.showListMessage, Object.keys(listInfo.list).join(', ')));
         utils.bot.sendChat('Do `!' + command.names[0] + ' <' + listInfo.showListArgumentName + '>' + '` to get the link.');
         return;
@@ -810,8 +921,8 @@ function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, comm
 
     function checkIfSpecify() {
         var result = null;
-        Object.keys(listInfo.list).forEach(function (key) {
-            if (key.toLowerCase() === utils.getCommandArguments()[0].toLowerCase()) {
+        Object.keys(listInfo.list).forEach(function(key) {
+            if(key.toLowerCase() === utils.getCommandArguments()[0].toLowerCase()) {
                 result = key;
             }
         });
@@ -819,26 +930,26 @@ function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, comm
     }
 
     var selected;
-    if (selected = checkIfSpecify()) {
-        if (typeof showSelectedFunk === 'function') {
+    if(selected = checkIfSpecify()) {
+        if(typeof showSelectedFunk === 'function') {
             showSelectedFunk(selected, listInfo.list[selected], listInfo.list);
         } else {
             utils.bot.sendChat(utils.getTargetName(2) + ' ' + util.format(listInfo.showSelectedMessage, selected) + listInfo.list[selected]);
         }
     } else {
-        if (typeof showNotFoundFunk === 'function') {
+        if(typeof showNotFoundFunk === 'function') {
             showNotFoundFunk(utils.getCommandArguments()[0], listInfo.list);
         }
     }
 }
 
 function doProps(utils, commandManager) {
-    if (!utils.currentDJ) {
+    if(!utils.currentDJ) {
         utils.bot.sendChat('@' + utils.getUserUsername() + ' there is no song to prop!');
         commandManager.setUserOnCooldown(utils, this, utils.settingsManager.getCooldown());
         return;
     }
-    if (utils.getUserId() === utils.currentDJ.id) {
+    if(utils.getUserId() === utils.currentDJ.id) {
         utils.bot.sendChat('@' + utils.getUserUsername() + ' we know you love your song, but let others also prop you!');
         commandManager.setUserOnCooldown(utils, this, utils.settingsManager.getCooldown());
         return;
@@ -849,12 +960,12 @@ function doProps(utils, commandManager) {
 function processAndDoPunish(utils, type) {
     var username = utils.getTargetName().replace("@", "");
     var punished = utils.bot.getUserByName(username, true);
-    if (punished) {
+    if(punished) {
         var time = parseFloat(utils.getCommandArguments()[1]);
-        if (isNaN(time)) {
+        if(isNaN(time)) {
             time = 5;
         }
-        switch (type) {
+        switch(type) {
             default:
                 utils.bot.sendChat("Something happened! D:");
                 return;

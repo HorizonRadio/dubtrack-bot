@@ -31,11 +31,18 @@ SC_CLIENT_ID=foo # Soundcloud client ID to get song url
 # Command Cooldown
 COOLDOWN=number # [OPTIONAL] Number for per user cooldown (in seconds). Default is 30
 
+# GAMES
+GAME_RESET=comma_separated_list # [OPTIONAL] If set each game listed will have it's cooldown reset on BOT boot.
+
 # Roulette
 ROULETTE_PRICE=number    # [OPTIONAL] Number of props an user needs to join a roulette. Default is 3.
 ROULETTE_DURATION=number # [OPTIONAL] Number in seconds the roulette lasts. Default is 60.
 ROULETTE_COOLDOWN=number # [OPTIONAL] Number in minutes the cooldown for the roulette lasts. Default is 60.
-ROULETTE_RESET=anything  # [OPTIONAL] If it's set (to anything) roulette cooldown will reset on BOT boot.
+
+# Scramble
+SCRAMBLE_REWARD=number   # [OPTIONAL] Number of props an user receives upon winning scramble. Default is 3.
+SCRAMBLE_DURATION=number # [OPTIONAL] Number in seconds the roulette lasts. Default is 60.
+SCRAMBLE_COOLDOWN=number # [OPTIONAL] Number in minutes the cooldown for the roulette lasts. Default is 30.
 
 # Redis Database
 REDIS_PORT=number    # [OPTIONAL] Port for Redis database, if not defined then defaults to 6379.

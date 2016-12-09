@@ -83,6 +83,10 @@ function(err, bot) {
     var RouletteManager = new require('./lib/rouletteManager.js');
     var rouletteManager = new RouletteManager(redisManager, settingsManager, bot);
 
+    // descramble manager
+    var ScrambleManager = new require('./lib/scrambleManager.js');
+    var scrambleManager = new ScrambleManager(redisManager, settingsManager, bot);
+
     var currentName = "";
     var currentID = "";
     var currentType = "";
@@ -99,9 +103,12 @@ function(err, bot) {
     console.infoFW("> DEVELOPED BY ANGELOIDIKAROS, DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM", false);
 
     // reset roulette, for debugging only
-    if(process.env.ROULETTE_RESET) {
-        redisManager.setLastRouletteTimestamp(true);
-        console.infoFW('> ROULETTE RESETED.', false);
+    if(process.env.GAME_RESET) {
+        var games = process.env.GAME_RESET.split(',');
+        games.forEach(function(gameName) {
+            redisManager.setLastGameTimestamp(gameName.toLowerCase(), true);
+            console.info('> ' + gameName.toUpperCase() + ' RESETED.');
+        });
     }
 
     var connectToRoom = bot.connect.bind(bot, process.env.DT_ROOM);
@@ -227,6 +234,7 @@ function(err, bot) {
             twitchManager: twitchManager,
             propsManager: propsManager,
             rouletteManager: rouletteManager,
+            scrambleManager: scrambleManager,
             settingsManager: settingsManager,
             chatUtils: chatUtils,
             userUtils: userUtils,

@@ -686,7 +686,7 @@ function regCommands(commandManager) {
                         }
                         var stream = body.stream;
                         if(stream) {
-                            utils.bot.sendChat(user + ' is currently *Steaming* ' + stream.channel.url);
+                            utils.bot.sendChat(user + ' is currently *Streaming* ' + stream.channel.url);
 
                         }
                         else {

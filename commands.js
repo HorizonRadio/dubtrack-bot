@@ -771,27 +771,53 @@ function regCommands(commandManager) {
                             return;
                         }
                     }
-                    var wordLength = Math.dice(4, 8);
+                    var wordLengthRange = [5, 8];
                     if(utils.getCommandArguments()[2]) {
-                        wordLength = parseInt(utils.getCommandArguments()[2]);
-                        if(isNaN(wordLength)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' the word length you gave me doesn\'t seem like a number.');
-                            return;
-                        } else if(wordLength < 3) {
-                            wordLength = 3;
-                        } else if(wordLength > 20) {
-                            wordLength = 20;
+                        var match = utils.getCommandArguments()[2].match(/^(\d+)(?:,|-)(\d+)$/);
+                        if(match) {
+                            wordLengthRange[0] = match[1];
+                            wordLengthRange[1] = match[2];
+                        } else {
+                            var wordLength = parseInt(utils.getCommandArguments()[2]);
+                            if(isNaN(wordLength)) {
+                                utils.bot.sendChat('@' + utils.getUserUsername() + ' the word length you gave me doesn\'t seem like a number.');
+                                return;
+                            } else {
+                                wordLengthRange[0] = wordLengthRange[1] = wordLength;
+                            }
                         }
+                        wordLengthRange.forEach(function(minOrMax, index) {
+                             if(minOrMax < 3) {
+                                wordLengthRange[index] = 3;
+                            }
+                            if(minOrMax > 20) {
+                                wordLengthRange[index] = 20;
+                            }
+                        });
                     }
 
                     utils.scrambleManager.start({
                         duration,
                         reward,
-                        wordLength
+                        wordLengthRange
                     }, function(scrambledWord) {
                         utils.bot.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
                         utils.bot.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
-                    }, function(word) {
+                    }, function(err, word) {
+                        if(err) {
+                            var errorMessage = 'Uh oh, something happened, and I don\'t know what! :S';
+                            switch(err) {
+                                default: break;
+                                case 'no-selectable-words':
+                                    errorMessage = 'Uh oh, something happened while fetching the word. I can\'t run the Scramble right now.';
+                                    break;
+                                case 'no-api-key':
+                                    errorMessage = 'Uh oh, no API Key from Wordnik specified. I can\'t fetch the words without it!';
+                                    break;
+                            }
+                            utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + errorMessage);
+                            return;
+                        }
                         utils.bot.sendChat('*Scramble ended!* The word was _' + word + '_');
                     });
                     console.warn('Scramble started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' second(s). Reward: ' + reward + ' prop(s).');
@@ -826,7 +852,7 @@ function regCommands(commandManager) {
                     return;
                 }
                 if(utils.scrambleManager.forceStop()) {
-                    utils.bot.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*.');
+                    utils.bot.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*. The word was _' + utils.scrambleManager.word + '_');
                 }
             }
         ),

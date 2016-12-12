@@ -40,6 +40,7 @@ ROULETTE_DURATION=number # [OPTIONAL] Number in seconds the roulette lasts. Defa
 ROULETTE_COOLDOWN=number # [OPTIONAL] Number in minutes the cooldown for the roulette lasts. Default is 60.
 
 # Scramble
+WORDNIK_API_KEY=string   # API Key for Wordnik. Get one at http://developer.wordnik.com/, if not defined then `!scramble` will throw an error.
 SCRAMBLE_REWARD=number   # [OPTIONAL] Number of props an user receives upon winning scramble. Default is 3.
 SCRAMBLE_DURATION=number # [OPTIONAL] Number in seconds the roulette lasts. Default is 60.
 SCRAMBLE_COOLDOWN=number # [OPTIONAL] Number in minutes the cooldown for the roulette lasts. Default is 30.

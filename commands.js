@@ -738,7 +738,7 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://github.com/Netox005/KappaCave-BOT');
             }
         ),
-        new Command('scramble_start', ['scramble', 'scrambleword', 'scrable_start'], 1, [], [],
+        new Command('scramble_start', ['scramble', 'scrambleword', 'scrable_start'], 1, ['mod'], [],
             /**
              * @param {MessageUtils} utils
              */

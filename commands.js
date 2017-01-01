@@ -186,11 +186,18 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                var message = 'Check if a video is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi';
-                if(utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
-                    message = 'Check if current video is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi?ytid=' + utils.getMediaFkid();
+                var videoStr = 'a video', queryString = '';
+                if(utils.getCommandArguments()[0]) {
+                    var videoID = utils.getCommandArguments()[0].match(/https?:\/\/(?:www\.)?youtu(?:\.be\/|be\.com\/watch\?v=)([a-z0-9_-]+)/i);
+                    if(videoID) videoID = videoID[1];
+                    else videoID = utils.getCommandArguments()[0];
+                    videoStr = 'that video';
+                    queryString = '?id=' + videoID;
+                } else if(utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
+                    videoStr = 'current video';
+                    queryString = '?id=' + utils.getMediaFkid();
                 }
-                utils.bot.sendChat(utils.getTargetName() + ' ' + message);
+                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format('Check if %s is available on any country at https://mitchdev.net/yt/%s', videoStr, queryString));
             }
         ),
         new Command('lovepercentage', ['lovepercent', 'love%', 'lovepercentage'], 1, [], [],

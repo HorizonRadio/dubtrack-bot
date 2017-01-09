@@ -712,7 +712,8 @@ function regCommands(commandManager) {
                             'The_kineese': 'the_kineese',
                             'Lord_eRazor': 'Gustavknas',
                             'TheHaremKing': 'dubx_theharemking',
-                            'seeBotsChat': 'seebotschat'
+                            'seeBotsChat': 'seebotschat',
+                            'DemoZ': 'KRDemoZ'
                         },
                     },
                     function(selectedName, list) {

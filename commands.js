@@ -710,7 +710,6 @@ function regCommands(commandManager) {
                             'Snaky': 'Snaky2610',
                             'Frosolf': 'frosolf',
                             'The_kineese': 'the_kineese',
-                            'Lord_eRazor': 'Gustavknas',
                             'TheHaremKing': 'dubx_theharemking',
                             'seeBotsChat': 'seebotschat',
                             'DemoZ': 'KRDemoZ'

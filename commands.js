@@ -833,7 +833,7 @@ function regCommands(commandManager) {
                 });
             }
         ),
-        new Command('scramble_guess', ['guess', 'descramble', 'unscramble', 'scrambleguess', 'scramble_guess'], 1, [], [],
+        new Command('scramble_guess', ['guess', 'descramble', 'unscramble', 'scrambleguess', 'scramble_guess'], 0, [], [],
             /**
              * @param {MessageUtils} utils
              */

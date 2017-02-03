@@ -689,23 +689,20 @@ function regCommands(commandManager) {
             function(utils, command) {
                 function fetchStreamerAndSendMessage(user, channel) {
                     utils.twitchManager.getStream(channel, function(err, body) {
-                        if(err) {
-                            console.error(err);
-                        }
-                        var stream = body.stream;
-                        if(stream) {
-                            utils.bot.sendChat(user + ' is currently *Streaming* ' + stream.channel.url);
+                        if(err)
+                            throw err;
 
-                        }
-                        else {
-                            utils.bot.sendChat(user + ' is currently *Offline* https://www.twitch.tv/' + channel.toLowerCase());
-                        }
-
+                        var stream = body.stream,
+                            message;
+                        if(stream)
+                            message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
+                        else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
+                        utils.bot.sendChat(message);
                     });
                 }
 
                 doListCommand({
-                        showListMessage: 'Pick a streamer from the list: %s or ALL (resident-dj+)',
+                        showListMessage: 'Pick a streamer from the list: %s or _ALL_ (resident-dj+)',
                         showListArgumentName: 'streamer',
                         list: {
                             'Snaky': 'Snaky2610',
@@ -717,14 +714,14 @@ function regCommands(commandManager) {
                         },
                     },
                     function(selectedName, list) {
-                        if(selectedName.toLowerCase() !== 'all' || !utils.botUtils.checkRole(utils.getUser(), 'resident-dj')) {
-                            return;
-                        }
-
-                        Object.keys(list).forEach(function(user) {
-                            // Ohh the spam
-                            fetchStreamerAndSendMessage(user, list[user]);
-                        });
+                        if(selectedName.toUpperCase() === 'ALL' && utils.botUtils.checkRole(utils.getUser(), 'resident-dj')) {
+                            Object.keys(list).forEach(function(user) {
+                                // Ohh the spam
+                                fetchStreamerAndSendMessage(user, list[user]);
+                            });
+                        } else fetchStreamerAndSendMessage(selectedName, selectedName, function(err, body) {
+                            console.log(err, body);
+                        })
                     },
                     fetchStreamerAndSendMessage,
                     utils,

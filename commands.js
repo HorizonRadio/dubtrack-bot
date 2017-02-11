@@ -193,12 +193,12 @@ function regCommands(commandManager) {
                     if(videoID) videoID = videoID[1];
                     else videoID = utils.getCommandArguments()[0];
                     videoStr = 'that video';
-                    queryString = '?id=' + videoID;
+                    queryString = '?ytid=' + videoID;
                 } else if(utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
                     videoStr = 'current video';
-                    queryString = '?id=' + utils.getMediaFkid();
+                    queryString = '?ytid=' + utils.getMediaFkid();
                 }
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format('Check if %s is available on any country at https://mitchdev.net/yt/%s', videoStr, queryString));
+                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format('Check if %s is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi%s', videoStr, queryString));
             }
         ),
         new Command('lovepercentage', ['lovepercent', 'love%', 'lovepercentage'], 1, [], [],

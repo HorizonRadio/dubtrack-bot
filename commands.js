@@ -4,6 +4,8 @@ var httpsReq = require('https').request; // Request
 var cookieDisplay = require('./cookies.json'); // Cookie command
 const util = require('util'); // Utils
 
+const youtubeURLRegexp = /https?:\/\/(?:www\.)?youtu(?:\.be\/|be\.com\/watch\?v=)([a-z0-9_-]+)/i;
+
 function regCommands(commandManager) {
     var Command = commandManager.Command;
     /**
@@ -43,15 +45,6 @@ function regCommands(commandManager) {
                 doProps(utils, commandManager);
             }
         ),
-        new Command('eta', ['eta'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' In order to get the ETA Timer, please download the DubX Extension from https://dubx.net/');
-                utils.bot.sendChat('https://i.imgur.com/ldj2jqf.png');
-            }
-        ),
         new Command('myprops', ['myprops'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -84,8 +77,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' you can download DubX at https://www.dubx.net');
-                utils.bot.sendChat('Follow this guide to help you install DubX! https://git.io/vzCVn');
+                utils.bot.sendChat(utils.getTargetName() + ' DubX was deleted from its owner\'s repository, but someone made a copy of the code. To get DubX, you can follow the instructions shown on this Imgur gallery: http://imgur.com/a/GGrub');
             }
         ),
         new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],
@@ -189,7 +181,7 @@ function regCommands(commandManager) {
             function(utils) {
                 var videoStr = 'a video', queryString = '';
                 if(utils.getCommandArguments()[0]) {
-                    var videoID = utils.getCommandArguments()[0].match(/https?:\/\/(?:www\.)?youtu(?:\.be\/|be\.com\/watch\?v=)([a-z0-9_-]+)/i);
+                    var videoID = utils.getCommandArguments()[0].match(youtubeURLRegexp);
                     if(videoID) videoID = videoID[1];
                     else videoID = utils.getCommandArguments()[0];
                     videoStr = 'that video';
@@ -279,20 +271,23 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                var arg0 = utils.getCommandArguments()[0];
-
-                if(!arg0 && !utils.bot.getMedia()) {
+                var fkid;
+                if(utils.getCommandArguments().length) {
+                    fkid = utils.getCommandArguments()[0].match(youtubeURLRegexp);
+                    if(fkid) fkid = fkid[1];
+                    else fkid = utils.getCommandArguments()[0];
+                } else if(utils.bot.getMedia()) {
+                    fkid = utils.getMediaFkid();
+                } else {
                     utils.bot.sendChat('@' + utils.getUserUsername() + ' no song is playing right now.');
                     return;
                 }
 
-                utils.redisManager.getLastSongTime(arg0 || utils.getMediaFkid(), function(result) {
-                    if(result) {
-                        utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song was last played ' + moment(parseInt(result)).from(Date.now()) + '.');
-                    }
-                    else {
-                        utils.bot.sendChat((arg0 ? 'That' : 'This') + ' video/song has not played in the past 5 weeks. It could never have played before, is a re-upload, or a remix.');
-                    }
+                utils.redisManager.getLastSongTime(fkid, function(result) {
+                    var msg = (fkid ? 'That' : 'This') + ' video/song has not played in the past 5 weeks. It could never have played before, is a re-upload, or a remix.';
+                    if(result)
+                        msg = (fkid ? 'That' : 'This') + ' video/song was last played ' + moment(parseInt(result)).from(Date.now()) + '.';
+                    utils.bot.sendChat(msg);
                 });
             }
         ),

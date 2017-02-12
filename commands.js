@@ -714,9 +714,7 @@ function regCommands(commandManager) {
                                 // Ohh the spam
                                 fetchStreamerAndSendMessage(user, list[user]);
                             });
-                        } else fetchStreamerAndSendMessage(selectedName, selectedName, function(err, body) {
-                            console.log(err, body);
-                        })
+                        } else fetchStreamerAndSendMessage(selectedName, selectedName)
                     },
                     fetchStreamerAndSendMessage,
                     utils,

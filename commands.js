@@ -706,7 +706,8 @@ function regCommands(commandManager) {
                             'Lord_eRazor': 'Gustavknas',
                             'TheHaremKing': 'dubx_theharemking',
                             'DemoZ': 'KRDemoZ',
-                            'Erikku-kun': 'DCIErikku'
+                            'Erikku-kun': 'DCIErikku',
+                            'Juunix0': 'Juunix0'
                         },
                     },
                     function(selectedName, list) {

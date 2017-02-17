@@ -684,14 +684,16 @@ function regCommands(commandManager) {
             function(utils, command) {
                 function fetchStreamerAndSendMessage(user, channel) {
                     utils.twitchManager.getStream(channel, function(err, body) {
-                        if(err)
-                            throw err;
-
-                        var stream = body.stream,
-                            message;
-                        if(stream)
-                            message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
-                        else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
+                        var message;
+                        if(!err) {
+                            var stream = body.stream;
+                            if(stream)
+                                message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
+                            else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
+                        } else {
+                            console.error(err);
+                            message = user + ' is not a valid TwitchTV Channel name/is not in the list.';
+                        }
                         utils.bot.sendChat(message);
                     });
                 }

@@ -690,10 +690,7 @@ function regCommands(commandManager) {
                             if(stream)
                                 message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
                             else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
-                        } else {
-                            console.error(err);
-                            message = user + ' is not a valid TwitchTV Channel name/is not in the list.';
-                        }
+                        } else message = user + ' is not a valid TwitchTV Channel name/is not in the list.';
                         utils.bot.sendChat(message);
                     });
                 }

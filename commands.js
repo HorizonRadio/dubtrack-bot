@@ -333,6 +333,40 @@ function regCommands(commandManager) {
                 }
             }
         ),
+        new Command('imgspamamount', ['setimgspamamount', 'imgspamamount', 'imagespamamount'], 0, ['mod'], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
+                    var output = utils.settingsManager.getImgRemoveSpamAmount();
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current max amount of images on a single thread is ' + output + '.');
+                    return 1;
+                }
+                var input = parseInt(utils.getCommandArguments()[0]);
+                if(!isNaN(input)) {
+                    utils.settingsManager.setImgRemoveSpamAmount(input);
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set max amount of images on a single thread to ' + input + '.');
+                }
+            }
+        ),
+        new Command('imgspamtime', ['setimgspamtime', 'imgspamtime', 'imagespamtime'], 0, ['mod'], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                if(utils.getCommandArguments()[0] == undefined) {
+                    var output = utils.settingsManager.getImgRemoveSpamTime();
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they exceed the max amount of images on a single thread for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
+                    return 1;
+                }
+                var input = parseInt(utils.getCommandArguments()[0]);
+                if(!isNaN(input)) {
+                    utils.settingsManager.setImgRemoveSpamTime(input);
+                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for exceeding the max amount of images on a single thread');
+                }
+            }
+        ),
         new Command('imgdubsamount', ['setimgdubsamount', 'imgdubsamount', 'imagedubsamount'], 0, ['mod'], [],
             /**
              * @param {MessageUtils} utils

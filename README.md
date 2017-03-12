@@ -1,16 +1,20 @@
 # What is this?
-This is an edit (or fork, if you must say so) of [nightbloo/nb3bot](https://github.com/nightbloo/nb3bot) , a Dubtrack.FM BOT made for the nightblue3 room.
+This is an edit (or fork, if you must say so) of [nightbloo/nb3bot](https://github.com/nightbloo/nb3bot), a Dubtrack.FM BOT made for the nightblue3 room.
 
 You will notice there is no "fork" warning on the repository page, that's because this is not a direct fork, but a copy of the repository.
-That was done intentionally to allow for a "issues" tab on this repository (GitHub doesn't have Issue pages for forks).
+~~That was done intentionally to allow for a "issues" tab on this repository (GitHub doesn't have Issue pages for forks).~~
+GitHub in fact does! But you have to enable it from the repository settings. Problem is, the repository is already done ¯\\\_(ツ)_/¯ 
 
 Below you'll find how to setup the BOT yourself, though it might be incomplete to how [nightbloo/nb3bot](https://github.com/nightbloo/nb3bot) has it, so I would recommend using that.
+
+# Requirements to setup
+[NodeJS](https://nodejs.org/en/download/) (recommended LTS)
 
 # Getting started
 Couple of steps to get started and getting it working:
 
-First of get the repo in a folder that you know how to get back to later on. Then open a nodejs terminal there.
-When you've opened the node.js terminal run ```npm install```.
+First of get the repo in a folder that you know how to get back to later on. Then open a NodeJS terminal there.
+When you've opened the NodeJS terminal run ```npm install```.
 
 After doing this you have to make a .env file in the main folder (no filename, just .env).
 Once you've made the file fill it with the login info/connection info of your bot's account on dubtrack. Which should look like this:
@@ -58,8 +62,10 @@ TWITCH_CLIENT_SECRET=bar   # Twitch Secret ID
 
 # Image Removal
 IMGTIME=number               # [OPTIONAL] Number for image removal (in seconds), if less than 0 then it's disabled. Default is 15
-IMGREMOVALDUBS_AMOUNT=number # [OPTIONAL] Number of dubs necessary by the user to bypass instant image removal, if less than 0 then it's disabled. Default is 10.
-IMGREMOVALDUBS_TIME=number   # [OPTIONAL] Number of time (in minutes) to unmute user after instant image removal, if less than 0 then it's disabled. Default is 5.
+IMGREMOVALSPAM_AMOUNT=number # [OPTIONAL] Number of images on a single message "thread" (messages from the same user, in a row) before removing them (image removal because of spam), if less than 0 then it's disabled. Default is 5.
+IMGREMOVALSPAM_TIME=number   # [OPTIONAL] Number of time (in minutes) to unmute user after instant image removal because of spam, if less than 0 then it's disabled. Default is 1.
+IMGREMOVALDUBS_AMOUNT=number # [OPTIONAL] Number of dubs necessary by the user to bypass instant image removal because of dubs, if less than 0 then it's disabled. Default is 300.
+IMGREMOVALDUBS_TIME=number   # [OPTIONAL] Number of time (in minutes) to unmute user after instant image removal because of dubs, if less than 0 then it's disabled. Default is 5.
 
 # Banphrases
 BANPHRASES_IGNORE_SPACES=boolean # [OPTIONAL] If to make ban phrases checker ignore spaces. Default is false

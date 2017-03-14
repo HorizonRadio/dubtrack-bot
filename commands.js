@@ -119,7 +119,8 @@ function regCommands(commandManager) {
                             'TickingTime': 'https://imgur.com/a/jWhjX',
                             'ItsClutch': 'https://imgur.com/a/EixZ2',
                             'Alexrerder': 'http://goo.gl/o06VPP',
-                            'Erikku-Kun': 'https://imgur.com/a/JCqgC'
+                            'Erikku-Kun': 'https://imgur.com/a/JCqgC',
+                            'Lord_eRazor': 'https://imgur.com/a/sCslW'
                         }
                     },
                     function(selectedName) {

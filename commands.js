@@ -72,12 +72,12 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/v1ZfB');
             }
         ),
-        new Command('dubx', ['dubx'], 1, [], [],
+        new Command('dub+', ['dub+'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' DubX was deleted from its owner\'s repository, but someone made a copy of the code. To get DubX, you can follow the instructions shown on this Imgur gallery: http://imgur.com/a/GGrub');
+                utils.bot.sendChat(utils.getTargetName() + ' You can download and install Dubtracks new Extension Dub+ from this Site https://dub.plus/#/ big thanks to MbSurfer! ');
             }
         ),
         new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],

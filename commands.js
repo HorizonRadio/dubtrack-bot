@@ -72,12 +72,12 @@ function regCommands(commandManager) {
                 utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/vSTpz');
             }
         ),
-        new Command('dub+', ['dub+', 'dubplus'], 1, [], [],
+        new Command('dubplus', ['dubplus', 'dub+'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' You can download and install Dubtrack\'s new extension Dub+ from the following site: https://dub.plus/#/');
+                utils.bot.sendChat(utils.getTargetName() + ' You can download and install Dubtrack\'s new extension Dub+ from the following site: https://dub.plus/');
             }
         ),
         new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],

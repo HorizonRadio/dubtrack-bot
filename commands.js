@@ -69,7 +69,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/v1ZfB');
+                utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/vSTpz');
             }
         ),
         new Command('dub+', ['dub+', 'dubplus'], 1, [], [],

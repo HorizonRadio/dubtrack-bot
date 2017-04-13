@@ -807,7 +807,7 @@ function regCommands(commandManager) {
                             return;
                         }
                     }
-                    var wordLengthRange = [5, 8];
+                    var wordLengthRange = [8, 12];
                     if(utils.getCommandArguments()[2]) {
                         var match = utils.getCommandArguments()[2].match(/^(\d+)(?:,|-)(\d+)$/);
                         if(match) {

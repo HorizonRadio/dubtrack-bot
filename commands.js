@@ -89,14 +89,6 @@ function regCommands(commandManager) {
                 utils.bot.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
         ),
-        new Command('css', ['css'], 1, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Fancy CSS! https://imgur.com/a/MuolQ');
-            }
-        ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],
             /**
              * @param {MessageUtils} utils

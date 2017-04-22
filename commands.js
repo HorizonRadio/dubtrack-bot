@@ -733,7 +733,7 @@ function regCommands(commandManager) {
                             'TheHaremKing': 'dubx_theharemking',
                             'DemoZ': 'KRDemoZ',
                             'Erikku-kun': 'DCIErikku',
-                            'Juunix0': 'Juunix0'
+                            'Juunix': 'Juunix0'
                         },
                     },
                     function(selectedName, list) {

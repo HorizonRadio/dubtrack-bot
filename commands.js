@@ -85,7 +85,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' you can download _give dem emotes_ at https://gde.netux.ml');
+                utils.bot.sendChat(utils.getTargetName() + ' You can download _give dem emotes_ at https://gde.netux.ml');
                 utils.bot.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
         ),
@@ -94,7 +94,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' a list of CSS Stylesheets can be found at https://git.io/v9TRz');
+                utils.bot.sendChat(utils.getTargetName() + ' A list of CSS Stylesheets can be found at https://git.io/v9TRz');
             }
         ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],

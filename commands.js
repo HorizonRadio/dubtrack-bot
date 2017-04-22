@@ -89,6 +89,14 @@ function regCommands(commandManager) {
                 utils.bot.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
         ),
+        new Command('css', ['css', 'style', 'styles', 'stylesheet', 'stylesheets'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                utils.bot.sendChat(utils.getTargetName() + ' a list of CSS Stylesheets can be found at https://git.io/v9TRz');
+            }
+        ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],
             /**
              * @param {MessageUtils} utils

@@ -726,7 +726,7 @@ function regCommands(commandManager) {
                         showListMessage: 'Pick a streamer from the list: %s or _ALL_ (resident-dj+)',
                         showListArgumentName: 'streamer',
                         list: {
-                            'Snaky': 'Snaky2610',
+                            'Snaky': 'SnakyLUL',
                             'Frosolf': 'frosolf',
                             'The_kineese': 'the_kineese',
                             'Lord_eRazor': 'Gustavknas',

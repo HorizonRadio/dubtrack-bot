@@ -94,7 +94,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' A list of CSS Stylesheets can be found at https://git.io/v9TRz');
+                utils.bot.sendChat(utils.getTargetName() + ' A list of CSS Stylesheets can be found at https://git.io/v9T2P');
             }
         ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],

@@ -451,6 +451,30 @@ function regCommands(commandManager) {
                 );
             }
         ),
+         new Command('dogfact', ['dogfact', 'dogefacts', 'doggofacts'], 1, ['resident-dj'], [],
+            /**
+             * @param {MessageUtils} utils
+             * @param {Command} command
+             * @param {Function} dontSetCooldown
+             */
+            function(utils, command, dontSetCooldown) {
+                requestDogFact(
+                    dontSetCooldown,
+                    function() {
+                        utils.bot.sendChat(utils.getTargetName() + ' no dog facts found :(');
+                    },
+                    function(fact) {
+                        var waysOfSayingIt = [
+                            '%u Dog fact: %f.',
+                            '%u Did you know: %f?',
+                            '%u Have you heard? %f.'
+                        ];
+                        waysOfSayingIt = waysOfSayingIt[Math.dice(waysOfSayingIt.length)];
+                        utils.bot.sendChat(waysOfSayingIt.replace('%u', utils.getTargetName()).replace('%f', fact));
+                    }
+                );
+            }
+        ),
         new Command('animelist', ['anime', 'animes', 'animelist'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -934,6 +958,59 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
 
         httpsReq({
             hostname: 'catfacts-api.appspot.com',
+            path: '/api/facts',
+            method: 'GET'
+        }, function(res) {
+            var data = '';
+            res.setEncoding('utf8');
+            res.on('data', function(chunk) {
+                data += chunk;
+            });
+            res.on('error', function(x) {
+                noFacts();
+                console.error(x);
+            });
+            res.on('end', function() {
+                try {
+                    data = JSON.parse(data);
+                }
+                catch(x) {
+                    noFacts();
+                }
+
+                // Fact too long. To avoid spam request a new one and call _cb.
+                if(data.facts[0].length > 125) {
+                    doSo(_cb);
+                    _cb(false);
+                    return;
+                }
+
+                // Replace last period and call _cb.
+                _cb(data.facts[0].replace(/\.$/g, ''));
+            });
+        }).end();
+    }
+
+    doSo(function(result) {
+        if(result !== false) {
+            cb(result);
+        }
+    });
+}
+function requestDogFact(dontSetCooldown, noFacts, cb) {
+    var requestsCount = 0;
+
+    function doSo(_cb) {
+        if(requestsCount > 5) {
+            dontSetCooldown();
+            return;
+        }
+        else {
+            requestsCount++;
+        }
+
+        httpsReq({
+            hostname: 'dog-api.kinduff.com',
             path: '/api/facts',
             method: 'GET'
         }, function(res) {

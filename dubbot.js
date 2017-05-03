@@ -269,7 +269,7 @@ new DubAPI({
                     id: rawUser._id
                 }
             }
-            console.info(strings.formatPunishment(
+            console.logPunishment(strings.formatPunishment(
                 data.type.replace('user-', ''),
                 data.user,
                 data.mod,

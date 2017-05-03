@@ -18,13 +18,13 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(Math.dice(50) === 0) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' hello...');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' hello...');
                     setTimeout(function() {
-                        utils.bot.sendChat('... it\'s me...');
+                        utils.BOT.sendChat('... it\'s me...');
                     }, 4500);
                 }
                 else {
-                    utils.bot.sendChat('Hi There, @' + utils.getUserUsername());
+                    utils.BOT.sendChat('Hi There, @' + utils.getUserUsername());
                 }
             }
         ),
@@ -33,7 +33,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' The current song is ' + utils.getMediaName() + ', the link is ' + utils.currentMediaPermaLink);
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' The current song is ' + utils.getMediaName() + ', the link is ' + utils.currentMediaPermaLink);
             }
         ),
         // No cooldown because no messages no need to cool this down
@@ -56,10 +56,10 @@ function regCommands(commandManager) {
                         if(result > 1) {
                             propss += 's';
                         }
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' you have ' + result + ' ' + propss + '! :)');
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' you have ' + result + ' ' + propss + '! :)');
                     }
                     else {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' you don\'t have any props! Play a song to get props! :)');
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' you don\'t have any props! Play a song to get props! :)');
                     }
                 });
             }
@@ -69,7 +69,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Rules: https://git.io/vSTpz');
+                utils.BOT.sendChat(utils.getTargetName() + ' Rules: https://git.io/vSTpz');
             }
         ),
         new Command('dubplus', ['dubplus', 'dub+'], 1, [], [],
@@ -77,7 +77,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' You can download and install Dubtrack\'s new extension Dub+ from the following site: https://dub.plus/');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can download and install Dubtrack\'s new extension Dub+ from the following site: https://dub.plus/');
             }
         ),
         new Command('givedememotes', ['gde', 'givedememotes'], 1, [], [],
@@ -85,8 +85,8 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' You can download _give dem emotes_ at https://gde.netux.ml');
-                utils.bot.sendChat('*Note:* Put your mouse over the button to see instructions');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can download _give dem emotes_ at https://gde.netux.ml');
+                utils.BOT.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
         ),
         new Command('css', ['css', 'style', 'styles', 'stylesheet', 'stylesheets'], 1, [], [],
@@ -94,7 +94,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' A list of CSS Stylesheets can be found at https://git.io/v9T2P');
+                utils.BOT.sendChat(utils.getTargetName() + ' A list of CSS Stylesheets can be found at https://git.io/v9T2P');
             }
         ),
         new Command('background', ['bg', 'background', 'backgrounds'], 1, [], [],
@@ -127,7 +127,7 @@ function regCommands(commandManager) {
                         if(selectedName.toLowerCase() !== 'room') {
                             return;
                         }
-                        utils.bot.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.bot.getRoomMeta().id + '/image');
+                        utils.BOT.sendChat(utils.getTargetName(2) + ' Room Background: ' + 'https://api.dubtrack.fm/room/' + utils.BOT.getRoomMeta().id + '/image');
                     },
                     undefined,
                     utils,
@@ -140,7 +140,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' How to Queue a Song: https://imgur.com/a/FghLg');
+                utils.BOT.sendChat(utils.getTargetName() + ' How to Queue a Song: https://imgur.com/a/FghLg');
             }
         ),
         new Command('ping', ['ping'], 0.5, [], [],
@@ -148,7 +148,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' pong!');
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' pong!');
             }
         ),
         new Command('pong', ['pong'], 0.5, [], [],
@@ -156,7 +156,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ping!');
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' ping!');
             }
         ),
         new Command('english', ['english', 'eng'], 1, [], [],
@@ -164,7 +164,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Please stick to English in this room, doing otherwise will result in a mute.');
+                utils.BOT.sendChat(utils.getTargetName() + ' Please stick to English in this room, doing otherwise will result in a mute.');
             }
         ),
         new Command('shush', ['shush', 'sush', 'noskip', 'noskiperino'], 1, ['vip'], [],
@@ -172,7 +172,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' ' + getShushMessage());
+                utils.BOT.sendChat(utils.getTargetName() + ' ' + getShushMessage());
             }
         ),
         new Command('videocheck', ['videocheck'], 1, [], [],
@@ -187,11 +187,11 @@ function regCommands(commandManager) {
                     else videoID = utils.getCommandArguments()[0];
                     videoStr = 'that video';
                     queryString = '?ytid=' + videoID;
-                } else if(utils.bot.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
+                } else if(utils.BOT.getMedia() && utils.getMediaType() === 'youtube' && utils.getMediaFkid()) {
                     videoStr = 'current video';
                     queryString = '?ytid=' + utils.getMediaFkid();
                 }
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format('Check if %s is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi%s', videoStr, queryString));
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + util.format('Check if %s is available on any country at https://polsy.org.uk/stuff/ytrestrict.cgi%s', videoStr, queryString));
             }
         ),
         new Command('lovepercentage', ['lovepercent', 'love%', 'lovepercentage'], 1, [], [],
@@ -212,30 +212,30 @@ function regCommands(commandManager) {
                         }
 
                         if(XOR(username.toLowerCase() == utils.getUserUsername().toLowerCase(), username2.toLowerCase() == utils.getUserUsername().toLowerCase())) {
-                            if(XOR(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase(), username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase())) {
-                                username = utils.bot.getSelf().username;
+                            if(XOR(username.toLowerCase() == utils.BOT.getSelf().username.toLowerCase(), username2.toLowerCase() == utils.BOT.getSelf().username.toLowerCase())) {
+                                username = utils.BOT.getSelf().username;
                             }
                         }
-                        else if(username2.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
-                            utils.bot.sendChat("@" + utils.getUserUsername() + " I love " + username + " 100%.");
+                        else if(username2.toLowerCase() == utils.BOT.getSelf().username.toLowerCase()) {
+                            utils.BOT.sendChat("@" + utils.getUserUsername() + " I love " + username + " 100%.");
                             return;
                         }
-                        else if(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
-                            utils.bot.sendChat("@" + utils.getUserUsername() + " I love " + username2 + " 100%.");
+                        else if(username.toLowerCase() == utils.BOT.getSelf().username.toLowerCase()) {
+                            utils.BOT.sendChat("@" + utils.getUserUsername() + " I love " + username2 + " 100%.");
                             return;
                         }
                     }
                     if(username.toLowerCase() == utils.getUserUsername().toLowerCase() && username2.toLowerCase() == utils.getUserUsername().toLowerCase()) {
-                        utils.bot.sendChat("@" + utils.getUserUsername() + " well I don't know.... how much do you love yourself?");
+                        utils.BOT.sendChat("@" + utils.getUserUsername() + " well I don't know.... how much do you love yourself?");
                         return;
                     }
-                    else if(username.toLowerCase() == utils.bot.getSelf().username.toLowerCase()) {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + " of course I love you 100%, silly <3");
+                    else if(username.toLowerCase() == utils.BOT.getSelf().username.toLowerCase()) {
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + " of course I love you 100%, silly <3");
                         return;
                     }
 
                     seedrandom(username.hashCode() + username2.hashCode(), { global: true });
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' there is ' + Math.dice(100) + '% of :nb3h: between ' + username2 + ' and ' + username);
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' there is ' + Math.dice(100) + '% of :nb3h: between ' + username2 + ' and ' + username);
                     seedrandom.resetGlobal();
                 }
             }
@@ -267,6 +267,15 @@ function regCommands(commandManager) {
                 processAndDoPunish(utils, 'ban');
             }
         ),
+        // Mod command only no cooldown needed : require mute
+        new Command('kick', ['kick'], 0, [], ['kick'],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                processAndDoPunish(utils, 'kick');
+            }
+        ),
         new Command('lastplayed', ['lastplayed', 'history'], 1, [], [],
             /**
              * @param {MessageUtils} utils
@@ -277,10 +286,10 @@ function regCommands(commandManager) {
                     fkid = utils.getCommandArguments()[0].match(youtubeURLRegexp);
                     if(fkid) fkid = fkid[1];
                     else fkid = utils.getCommandArguments()[0];
-                } else if(utils.bot.getMedia()) {
+                } else if(utils.BOT.getMedia()) {
                     fkid = utils.getMediaFkid();
                 } else {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' no song is playing right now.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' no song is playing right now.');
                     return;
                 }
 
@@ -288,7 +297,7 @@ function regCommands(commandManager) {
                     var msg = (fkid ? 'That' : 'This') + ' video/song has not played in the past 5 weeks. It could never have played before, is a re-upload, or a remix.';
                     if(result)
                         msg = (fkid ? 'That' : 'This') + ' video/song was last played ' + moment(parseInt(result)).from(Date.now()) + '.';
-                    utils.bot.sendChat(msg);
+                    utils.BOT.sendChat(msg);
                 });
             }
         ),
@@ -297,7 +306,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
+                utils.BOT.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
             }
         ),
         new Command('setcd', ['setcd', 'setcooldown', 'cooldown'], 0, ['mod'], [],
@@ -307,13 +316,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getCooldown();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current command cooldown is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' current command cooldown is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setCooldown(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set cooldown to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' set cooldown to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
             }
         ),
@@ -324,13 +333,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgTime();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current image removal time is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' current image removal time is of ' + output + ' second' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setImgTime(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' set image removal time to ' + input + ' second' + (input === 1 ? '' : 's') + '.');
                 }
             }
         ),
@@ -341,13 +350,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveSpamAmount();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current max amount of images on a single thread is ' + output + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' current max amount of images on a single thread is ' + output + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setImgRemoveSpamAmount(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set max amount of images on a single thread to ' + input + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' set max amount of images on a single thread to ' + input + '.');
                 }
             }
         ),
@@ -358,13 +367,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveSpamTime();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they exceed the max amount of images on a single thread for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they exceed the max amount of images on a single thread for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setImgRemoveSpamTime(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for exceeding the max amount of images on a single thread');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for exceeding the max amount of images on a single thread');
                 }
             }
         ),
@@ -375,13 +384,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgDubsAmount();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' current amount of dubs for images is of ' + output + ' dub' + (output === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' current amount of dubs for images is of ' + output + ' dub' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setImgDubsAmount(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' set the amount of dubs for images to ' + input);
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' set the amount of dubs for images to ' + input);
                 }
             }
         ),
@@ -392,13 +401,13 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveMuteTime();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they don\`t meet the required amount of dubs for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' users are getting muted if they don\`t meet the required amount of dubs for ' + output + ' minute' + (output === 1 ? '' : 's') + '.');
                     return 1;
                 }
                 var input = parseInt(utils.getCommandArguments()[0]);
                 if(!isNaN(input)) {
                     utils.settingsManager.setImgRemoveMuteTime(input);
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for not meeting the required amount of dubs.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' users will now get muted for ' + input + ' minute' + (input === 1 ? '' : 's') + ' for not meeting the required amount of dubs.');
                 }
             }
         ),
@@ -407,7 +416,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.moderateDeleteChat(utils.getId());
+                utils.BOT.moderateDeleteChat(utils.getId());
                 utils.timeMuteUser(5, '@' + utils.getUserUsername() + ' ' + getShushMessage());
             }
         ),
@@ -416,7 +425,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' You can clear you chat if it gets too laggy. https://i.imgur.com/D1T64mP.gif');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can clear you chat if it gets too laggy. https://i.imgur.com/D1T64mP.gif');
             }
         ),
         new Command('androidapp', ['android', 'androidapp', 'androidapk'], 1, [], [],
@@ -424,7 +433,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Unofficial Android app (sorry iOS users) for Dubtrack: https://play.google.com/store/apps/details?id=co.mar974.dubtrackfm | Thank mar974 :D');
+                utils.BOT.sendChat(utils.getTargetName() + ' Unofficial Android app (sorry iOS users) for Dubtrack: https://play.google.com/store/apps/details?id=co.mar974.dubtrackfm | Thank mar974 :D');
             }
         ),
         new Command('catfact', ['catfact', 'catfacts'], 1, ['resident-dj'], [],
@@ -437,7 +446,7 @@ function regCommands(commandManager) {
                 requestCatFact(
                     dontSetCooldown,
                     function() {
-                        utils.bot.sendChat(utils.getTargetName() + ' no cat facts found :(');
+                        utils.BOT.sendChat(utils.getTargetName() + ' no cat facts found :(');
                     },
                     function(fact) {
                         var waysOfSayingIt = [
@@ -446,7 +455,7 @@ function regCommands(commandManager) {
                             '%u Have you heard? %f.'
                         ];
                         waysOfSayingIt = waysOfSayingIt[Math.dice(waysOfSayingIt.length)];
-                        utils.bot.sendChat(waysOfSayingIt.replace('%u', utils.getTargetName()).replace('%f', fact));
+                        utils.BOT.sendChat(waysOfSayingIt.replace('%u', utils.getTargetName()).replace('%f', fact));
                     }
                 );
             }
@@ -456,8 +465,8 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Anime List: https://goo.gl/d4lvua');
-                utils.bot.sendChat('Never_Pause also recommends his animelist: https://goo.gl/h6OoW3');
+                utils.BOT.sendChat(utils.getTargetName() + ' Anime List: https://goo.gl/d4lvua');
+                utils.BOT.sendChat('Never_Pause also recommends his animelist: https://goo.gl/h6OoW3');
             }
         ),
         new Command('cookie', ['cookie', 'givecookie'], 1, [], [],
@@ -466,28 +475,28 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.getCommandArguments().length < 2) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' cookies on display: ' + Object.keys(cookieDisplay).join(', '));
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' cookies on display: ' + Object.keys(cookieDisplay).join(', '));
                     return;
                 }
                 var cookie = cookieDisplay[utils.getCommandArguments()[0].toLowerCase()];
                 if(!cookie) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I don\'t have that cookie on display.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I don\'t have that cookie on display.');
                     return;
                 }
-                var target = utils.bot.getUserByName(utils.getTargetName(2, true));
+                var target = utils.BOT.getUserByName(utils.getTargetName(2, true));
                 if(!target) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I would give them the cookie but they seem to not be here.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I would give them the cookie but they seem to not be here.');
                     return;
                 }
                 if(target.id === utils.getUserId()) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' don\'t you already have the cookie? Just eat it!');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' don\'t you already have the cookie? Just eat it!');
                     return;
                 }
-                if(target.id === utils.bot.getSelf().id) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' for me :nb3Happy:? Thank you! I\'ll eat this ' + cookie.name + ' now if you don\'t mind :rawrrCookie:');
+                if(target.id === utils.BOT.getSelf().id) {
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' for me :nb3Happy:? Thank you! I\'ll eat this ' + cookie.name + ' now if you don\'t mind :rawrrCookie:');
                     return;
                 }
-                utils.bot.sendChat('@' + target.username + ' ' + utils.getUserUsername() + ' gave you a/an ' + cookie.name + ' ' + cookie.emote);
+                utils.BOT.sendChat('@' + target.username + ' ' + utils.getUserUsername() + ' gave you a/an ' + cookie.name + ' ' + cookie.emote);
             }
         ),
         new Command('banphraseignorespaces', ['setbanphraseignorespaces', 'banphraseignorespaces', 'setbanphrasesignorespaces', 'banphrasesignorespaces'], 0, ['mod'], [],
@@ -497,12 +506,12 @@ function regCommands(commandManager) {
             function(utils) {
                 if(utils.getCommandArguments()[0] == undefined) {
                     var output = utils.settingsManager.getImgRemoveMuteTime();
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' checking for ban phrases is ' + (utils.settingsManager.getBanPhrasesIgnoreSpaces() ? '*not*' : '') + ' ignoring spaces.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' checking for ban phrases is ' + (utils.settingsManager.getBanPhrasesIgnoreSpaces() ? '*not*' : '') + ' ignoring spaces.');
                     return 1;
                 }
                 var input = /^(?:true|enable|yes|y|on|tick|check|:white_check_mark:|:heavy_check_mark:|:ballot_box_with_check:)$/i.test(utils.getCommandArguments()[0]);
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(input);
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(input));
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(input));
             }
         ),
         new Command('set_banphraseignorespaces', ['setspaces', 'setspace'], 0, ['mod'], [],
@@ -511,7 +520,7 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(true);
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(true));
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(true));
             }
         ),
         new Command('unset_banphraseignorespaces', ['unsetspaces', 'unsetspace'], 0, ['mod'], [],
@@ -520,7 +529,7 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 utils.settingsManager.setBanPhrasesIgnoreSpaces(false);
-                utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(false));
+                utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + getBanPhrasesIgnoreSpacesMessage(false));
             }
         ),
         new Command('roulette_start', ['roulette', 'roullete'], 0, ['mod'], [],
@@ -529,21 +538,21 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.rouletteManager.started !== false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' did you forget the "join" part? There is a roulette running right now!');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' did you forget the "join" part? There is a roulette running right now!');
                     return;
                 }
                 utils.redisManager.getLastGameTimestamp('roulette', function(last) {
                     {
                         var now = Date.now(), cooldown = utils.settingsManager.getRouletteCooldown();
                         if(last >= 0 && (now - last) < cooldown) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' hold on! Last roulette was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the roulette again.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' hold on! Last roulette was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the roulette again.');
                             return;
                         }
                     }
                     {
-                        var queue = utils.bot.getQueue();
+                        var queue = utils.BOT.getQueue();
                         if(queue.length <= 1) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' wow what?! I don\'t see users in queue' + (queue.length === 1 ? ', only that ' + queue[0].user.username + ' guy' : '') + '.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' wow what?! I don\'t see users in queue' + (queue.length === 1 ? ', only that ' + queue[0].user.username + ' guy' : '') + '.');
                             return;
                         }
                     }
@@ -551,7 +560,7 @@ function regCommands(commandManager) {
                     if(utils.getCommandArguments()[0]) {
                         duration = parseInt(utils.getCommandArguments()[0]);
                         if(isNaN(duration)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
@@ -560,28 +569,28 @@ function regCommands(commandManager) {
                     if(utils.getCommandArguments()[1]) {
                         price = parseInt(utils.getCommandArguments()[1]);
                         if(isNaN(price)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that price you gave me doesn\'t seem like a number.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' that price you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
 
-                    utils.bot.sendChat('*Roulette is starting!* Use `!join` to join in!');
-                    utils.bot.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Price to join is of _' + price + ' prop' + (price !== 1 ? 's' : '') + '_.');
+                    utils.BOT.sendChat('*Roulette is starting!* Use `!join` to join in!');
+                    utils.BOT.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Price to join is of _' + price + ' prop' + (price !== 1 ? 's' : '') + '_.');
                     utils.rouletteManager.start(duration, price, function(error, winnerId, oldSpot, newSpot) {
                         if(error) {
-                            utils.bot.sendChat('aaaaand *the rou*-- wait.');
+                            utils.BOT.sendChat('aaaaand *the rou*-- wait.');
                             switch(error) {
                                 default:
-                                    utils.bot.sendChat('Uh oh, something happened! They didn\'t tell me what, but it did something to this roulette.');
+                                    utils.BOT.sendChat('Uh oh, something happened! They didn\'t tell me what, but it did something to this roulette.');
                                     break;
                                 case 'not-enough-users':
-                                    utils.bot.sendChat('Nobody joined the roulette, now I\'m sad :frowning:.');
+                                    utils.BOT.sendChat('Nobody joined the roulette, now I\'m sad :frowning:.');
                                     break;
                                 case 'spot-lower-than-zero':
-                                    utils.bot.sendChat('Uh oh. Apparently my algorithm is wrong, because I was about to move someone to spot #' + newSpot + '!');
+                                    utils.BOT.sendChat('Uh oh. Apparently my algorithm is wrong, because I was about to move someone to spot #' + newSpot + '!');
                                     break;
                                 case 'spot-higher-than-queue-length':
-                                    utils.bot.sendChat('Uh oh. Apparently my algorithm is wrong, because I was about to move someone above the size of the queue!');
+                                    utils.BOT.sendChat('Uh oh. Apparently my algorithm is wrong, because I was about to move someone above the size of the queue!');
                                     break;
                             }
                             return;
@@ -594,11 +603,11 @@ function regCommands(commandManager) {
                             movedMsg += ' spot' + (movedMsg !== 1 ? 's' : '') + ' ' + (oldSpot > newSpot ? 'above! :nb3Boosted:' : 'below :frowning:');
                         }
 
-                        utils.bot.sendChat('aaaaand *the roulette is over*!');
-                        utils.bot.sendChat('Our lucky winner is @' + utils.bot.getUser(winnerId).username + '! You\'ll be moved to spot #' + (newSpot + 1) + ' in queue (' + movedMsg + ').');
-                        utils.bot.moderateMoveDJ(winnerId, newSpot);
+                        utils.BOT.sendChat('aaaaand *the roulette is over*!');
+                        utils.BOT.sendChat('Our lucky winner is @' + utils.BOT.getUser(winnerId).username + '! You\'ll be moved to spot #' + (newSpot + 1) + ' in queue (' + movedMsg + ').');
+                        utils.BOT.moderateMoveDJ(winnerId, newSpot);
                     });
-                    console.warn('Roulette started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' second(s). Price: ' + price + ' prop(s).');
+                    console.logGameState(`Roulette started by ${utils.strings.formatUser(utils.getUser())}. Duration: ${duration} second(s). Price: ${price} prop(s).`);
                 });
             }
         ),
@@ -608,11 +617,11 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.rouletteManager.started === false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
                     return;
                 }
-                if(utils.bot.getQueuePosition(utils.getUserId()) === -1) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' you are not in queue!');
+                if(utils.BOT.getQueuePosition(utils.getUserId()) === -1) {
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' you are not in queue!');
                     return;
                 }
                 if(utils.rouletteManager.listedUsers.indexOf(utils.getUserId()) >= 0) {
@@ -621,7 +630,7 @@ function regCommands(commandManager) {
                 utils.redisManager.getProps(utils.getUserId(), function(propsCount) {
                     if(typeof propsCount === 'undefined' || isNaN(propsCount)) propsCount = 0;
                     if(propsCount < utils.rouletteManager.currentPrice) {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' you\'re low in props! Sorry :S');
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' you\'re low in props! Sorry :S');
                         return;
                     }
                     utils.rouletteManager.addUser(utils.getUser().id);
@@ -634,11 +643,11 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.rouletteManager.started === false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m not running a roulette right now.');
                     return;
                 }
                 if(utils.rouletteManager.forceStop()) {
-                    utils.bot.sendChat('Hold your typing! ' + utils.getUserUsername() + ' *stopped the roulette*.');
+                    utils.BOT.sendChat('Hold your typing! ' + utils.getUserUsername() + ' *stopped the roulette*.');
                 }
             }
         ),
@@ -648,15 +657,15 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.rouletteManager.started !== false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' a roulette is running right now, silly!');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' a roulette is running right now, silly!');
                     return;
                 }
                 utils.redisManager.getLastGameTimestamp('roulette', function(last) {
                     var now = Date.now(), cooldown = utils.settingsManager.getRouletteCooldown();
                     if(last >= 0 && (now - last) < cooldown) {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' last roulette was ' + moment(last).fromNow() + '. You will be able to run a roulette in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' last roulette was ' + moment(last).fromNow() + '. You will be able to run a roulette in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
                     } else {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
                     }
                 });
             }
@@ -676,11 +685,11 @@ function regCommands(commandManager) {
                     user = utils.getUserUsername();
                 }
                 if(isNaN(spot = parseInt(spot))) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' spot doesn\'t seem like a number.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' spot doesn\'t seem like a number.');
                     return;
                 }
                 {
-                    var queue = utils.bot.getQueue();
+                    var queue = utils.BOT.getQueue();
                     if(spot >= queue.length) {
                         spot = queue.length;
                     } else if(spot <= 0) {
@@ -689,17 +698,17 @@ function regCommands(commandManager) {
                 }
                 {
                     var username = user;
-                    if(!(user = utils.bot.getUserByName(username, true))) {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + username + ' is not online.');
+                    if(!(user = utils.BOT.getUserByName(username, true))) {
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + username + ' is not online.');
                         return;
                     }
                 }
-                if(utils.bot.getQueuePosition(user.id) === spot - 1) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + (utils.getUserId() === user.id ? 'you are' : 'user') + ' already on that spot!');
+                if(utils.BOT.getQueuePosition(user.id) === spot - 1) {
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + (utils.getUserId() === user.id ? 'you are' : 'user') + ' already on that spot!');
                     return;
                 }
-                utils.bot.moderateMoveDJ(user.id, spot - 1, function() {
-                    utils.bot.sendChat('@' + user.username + ' you got moved to spot #' + spot + ' in queue.');
+                utils.BOT.moderateMoveDJ(user.id, spot - 1, function() {
+                    utils.BOT.sendChat('@' + user.username + ' you got moved to spot #' + spot + ' in queue.');
                 });
             }
         ),
@@ -708,7 +717,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' How to export a playlist to YouTube: https://imgur.com/a/VVoFV');
+                utils.BOT.sendChat(utils.getTargetName() + ' How to export a playlist to YouTube: https://imgur.com/a/VVoFV');
             }
         ),
         new Command('streamers', ['stream', 'streams', 'streamers'], 1, [], [],
@@ -726,7 +735,7 @@ function regCommands(commandManager) {
                                 message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
                             else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
                         } else message = user + ' is not a valid TwitchTV Channel name/is not in the list.';
-                        utils.bot.sendChat(message);
+                        utils.BOT.sendChat(message);
                     });
                 }
 
@@ -763,7 +772,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
+                utils.BOT.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
             }
         ),
         new Command('repository', ['repository', 'repo'], 1, [], [],
@@ -771,7 +780,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.bot.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://git.io/vSIuM');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://git.io/vSIuM');
             }
         ),
         new Command('scramble_start', ['scramble', 'scrambleword', 'scrable_start'], 1, ['mod'], [],
@@ -780,14 +789,14 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.scrambleManager.started !== false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m running a scramble right now!');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m running a scramble right now!');
                     return;
                 }
                 utils.redisManager.getLastGameTimestamp('scramble', function(last) {
                     {
                         var now = Date.now(), cooldown = utils.settingsManager.getScrambleCooldown();
                         if(last >= 0 && (now - last) < cooldown) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' hold on! Last scramble was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the scramble again.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' hold on! Last scramble was ' + moment(last).fromNow() + '. You must wait ' + (cooldown / 60 / 1000) + ' minute(s) to run the scramble again.');
                             return;
                         }
                     }
@@ -795,7 +804,7 @@ function regCommands(commandManager) {
                     if(utils.getCommandArguments()[0]) {
                         duration = parseInt(utils.getCommandArguments()[0]);
                         if(isNaN(duration)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' that duration you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
@@ -803,7 +812,7 @@ function regCommands(commandManager) {
                     if(utils.getCommandArguments()[1]) {
                         reward = parseInt(utils.getCommandArguments()[1]);
                         if(isNaN(reward)) {
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' the reward amount you gave me doesn\'t seem like a number.');
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' the reward amount you gave me doesn\'t seem like a number.');
                             return;
                         }
                     }
@@ -816,7 +825,7 @@ function regCommands(commandManager) {
                         } else {
                             var wordLength = parseInt(utils.getCommandArguments()[2]);
                             if(isNaN(wordLength)) {
-                                utils.bot.sendChat('@' + utils.getUserUsername() + ' the word length you gave me doesn\'t seem like a number.');
+                                utils.BOT.sendChat('@' + utils.getUserUsername() + ' the word length you gave me doesn\'t seem like a number.');
                                 return;
                             } else {
                                 wordLengthRange[0] = wordLengthRange[1] = wordLength;
@@ -837,8 +846,8 @@ function regCommands(commandManager) {
                         reward,
                         wordLengthRange
                     }, function(scrambledWord) {
-                        utils.bot.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
-                        utils.bot.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
+                        utils.BOT.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
+                        utils.BOT.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
                     }, function(err, word) {
                         if(err) {
                             var errorMessage = 'Uh oh, something happened, and I don\'t know what! :S';
@@ -851,12 +860,12 @@ function regCommands(commandManager) {
                                     errorMessage = 'Uh oh, no API Key from Wordnik specified. I can\'t fetch the words without it!';
                                     break;
                             }
-                            utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + errorMessage);
+                            utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + errorMessage);
                             return;
                         }
-                        utils.bot.sendChat('*Scramble ended!* The word was _' + word + '_');
+                        utils.BOT.sendChat('*Scramble ended!* The word was _' + word + '_');
                     });
-                    console.warn('Scramble started by @' + utils.getUserUsername() + '. Duration: ' + duration + ' second(s). Reward: ' + reward + ' prop(s).');
+                    console.logGameState(`Scramble started by ${utils.strings.formatUser(utils.getUser())}. Duration: ${duration} second(s). Reward: ${reward} prop(s). Word length: ${wordLength} letter(s).`);
                 });
             }
         ),
@@ -866,7 +875,7 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.scrambleManager.started === false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
                     return;
                 }
                 var guess = utils.getCommandArguments()[0];
@@ -874,7 +883,7 @@ function regCommands(commandManager) {
                     return;
                 }
                 if(utils.scrambleManager.guess(utils.getUserId(), guess)) {
-                    utils.bot.sendChat('*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _' + utils.scrambleManager.word + '_.');
+                    utils.BOT.sendChat('*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _' + utils.scrambleManager.word + '_.');
                 }
             }
         ),
@@ -884,11 +893,11 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.scrambleManager.started === false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
                     return;
                 }
                 if(utils.scrambleManager.forceStop()) {
-                    utils.bot.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*. The word was _' + utils.scrambleManager.word + '_');
+                    utils.BOT.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*. The word was _' + utils.scrambleManager.word + '_');
                 }
             }
         ),
@@ -898,15 +907,15 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 if(utils.scrambleManager.started !== false) {
-                    utils.bot.sendChat('@' + utils.getUserUsername() + ' a scramble is running right now, silly!');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' a scramble is running right now, silly!');
                     return;
                 }
                 utils.redisManager.getLastGameTimestamp('scramble', function(last) {
                     var now = Date.now(), cooldown = utils.settingsManager.getScrambleCooldown();
                     if(last >= 0 && (now - last) < cooldown) {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' last scramble was ' + moment(last).fromNow() + '. You will be able to run a scramble in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' last scramble was ' + moment(last).fromNow() + '. You will be able to run a scramble in ' + moment(last + cooldown).diff(now, 'minutes') + ' minute(s).');
                     } else {
-                        utils.bot.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
+                        utils.BOT.sendChat('@' + utils.getUserUsername() + ' more than ' + (cooldown / 60 / 1000) + ' minute(s) has passed, go ahead to run that command!')
                     }
                 });
             }
@@ -976,8 +985,8 @@ function requestCatFact(dontSetCooldown, noFacts, cb) {
 
 function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, command) {
     if(!utils.getCommandArguments()[0]) {
-        utils.bot.sendChat('@' + utils.getUserUsername() + ' ' + util.format(listInfo.showListMessage, Object.keys(listInfo.list).join(', ')));
-        utils.bot.sendChat('Do `!' + command.names[0] + ' <' + listInfo.showListArgumentName + '>' + '` to get the link.');
+        utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + util.format(listInfo.showListMessage, Object.keys(listInfo.list).join(', ')));
+        utils.BOT.sendChat('Do `!' + command.names[0] + ' <' + listInfo.showListArgumentName + '>' + '` to get the link.');
         return;
     }
 
@@ -996,7 +1005,7 @@ function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, comm
         if(typeof showSelectedFunk === 'function') {
             showSelectedFunk(selected, listInfo.list[selected], listInfo.list);
         } else {
-            utils.bot.sendChat(utils.getTargetName(2) + ' ' + util.format(listInfo.showSelectedMessage, selected) + listInfo.list[selected]);
+            utils.BOT.sendChat(utils.getTargetName(2) + ' ' + util.format(listInfo.showSelectedMessage, selected) + listInfo.list[selected]);
         }
     } else {
         if(typeof showNotFoundFunk === 'function') {
@@ -1007,12 +1016,12 @@ function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, comm
 
 function doProps(utils, commandManager) {
     if(!utils.currentDJ) {
-        utils.bot.sendChat('@' + utils.getUserUsername() + ' there is no song to prop!');
+        utils.BOT.sendChat('@' + utils.getUserUsername() + ' there is no song to prop!');
         commandManager.setUserOnCooldown(utils, this, utils.settingsManager.getCooldown());
         return;
     }
     if(utils.getUserId() === utils.currentDJ.id) {
-        utils.bot.sendChat('@' + utils.getUserUsername() + ' we know you love your song, but let others also prop you!');
+        utils.BOT.sendChat('@' + utils.getUserUsername() + ' we know you love your song, but let others also prop you!');
         commandManager.setUserOnCooldown(utils, this, utils.settingsManager.getCooldown());
         return;
     }
@@ -1020,30 +1029,34 @@ function doProps(utils, commandManager) {
 }
 
 function processAndDoPunish(utils, type) {
-    var username = utils.getTargetName().replace("@", "");
-    var punished = utils.bot.getUserByName(username, true);
+    const username = utils.getTargetName(undefined, true);
+    const punished = utils.BOT.getUserByName(username, true);
+    const mod = utils.getUser();
     if(punished) {
-        var time = parseFloat(utils.getCommandArguments()[1]);
+        let time = parseFloat(utils.getCommandArguments()[1]);
         if(isNaN(time)) {
             time = 5;
         }
         switch(type) {
             default:
-                utils.bot.sendChat("Something happened! D:");
+                utils.BOT.sendChat("Something happened! D:");
                 return;
             case 'ban':
-                utils.botUtils.timeBan(punished, time, null);
+                utils.botUtils.timeBan(punished, mod, time, false);
                 break;
             case 'mute':
-                utils.botUtils.timeMute(punished, time, "@" + username + " muted for " + time + " minute" + (time !== 1 ? 's' : '') + '!');
+                utils.botUtils.timeMute(punished, mod, time, true);
                 break;
             case 'timeout':
-                utils.botUtils.timeoutUser(punished, time, "@" + username + " timed out for " + time + " minute" + (time !== 1 ? 's' : '') + '!');
+                utils.botUtils.timeoutUser(punished, mod, time, true);
+                break;
+            case 'kick':
+                utils.botUtils.kickUser(punished, mod, false);
                 break;
         }
     }
     else {
-        utils.bot.sendChat("No user found by the name " + username + ".")
+        utils.BOT.sendChat("No user found by the name " + username + ".")
     }
 }
 

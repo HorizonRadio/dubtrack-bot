@@ -3,11 +3,11 @@
  * ABOUT
  **************************************************************************
  *
- * NightBlueBot is a bot created for the
+ * NightBlueBot is a BOT created for the
  * NightBlue3 room on www.dubtrack.fm
  *
  * This is a modified version of said
- * bot, for usage on the KappaCave
+ * BOT, for usage on the KappaCave
  * room on www.dubtrack.fm as well
  *
  **************************************************************************
@@ -35,34 +35,35 @@
 
 require('./lib/utilsLoader');
 require('./lib/discordWebhookLoader');
-var DubAPI = require('dubapi');
-var jsonfile = require('jsonfile');
-var fs = require('fs');
-var os = require("os");
-var httpReq = require('http').request;
+const DubAPI = require('dubapi');
+const jsonfile = require('jsonfile');
+const fs = require('fs');
+const os = require("os");
+const httpReq = require('http').request;
 // Twitch Stuff
-var twitchManager = require('./lib/twitchManager.js');
+const twitchManager = require('./lib/twitchManager.js');
 // Time formatting
-var moment = require('moment');
+const moment = require('moment');
 // Redis Manager - handles all of the redis interaction
-var redisManager = require('./lib/redisManager.js');
+const redisManager = require('./lib/redisManager.js');
 // Settings Manager
-var settingsManager = require('./lib/settingsManager.js');
+const settingsManager = require('./lib/settingsManager.js');
 // props Manager
-var PropsManager = new require('./lib/propsManager.js');
-var propsManager = new PropsManager(redisManager);
+const PropsManager = new require('./lib/propsManager.js');
+const propsManager = new PropsManager(redisManager);
 // Chat and User Utils
-var chatUtils = require('./lib/chatUtils.js');
-var userUtils = require('./lib/userUtils.js');
-var mediaUtils = require('./lib/mediaUtils.js');
-var MessageUtils = require('./lib/messageUtils.js');
+const chatUtils = require('./lib/chatUtils.js');
+const userUtils = require('./lib/userUtils.js');
+const mediaUtils = require('./lib/mediaUtils.js');
+const strings = require('./lib/strings.js');
+const MessageUtils = require('./lib/messageUtils.js');
 // Chat and Command Mangers
-var ChatManager = require('./lib/chatManager.js');
-var chatManager = new ChatManager();
-var CommandManager = require('./lib/commandManager.js');
-var commandManager = new CommandManager();
+const ChatManager = require('./lib/chatManager.js');
+const chatManager = new ChatManager();
+const CommandManager = require('./lib/commandManager.js');
+const commandManager = new CommandManager();
 
-var startTime = Date.now();
+const startTime = Date.now();
 
 console.infoFW('> Starting DubAPI...', false);
 
@@ -73,28 +74,28 @@ new DubAPI({
     },
     /**
      * @param err
-     * @param {DubAPI} bot
+     * @param {DubAPI} BOT
      * */
-    function(err, bot) {
-        var BotUtils = require('./lib/botUtils.js');
-        var botUtils = new BotUtils(bot);
+    function(err, BOT) {
+        const BotUtils = require('./lib/botUtils.js');
+        const botUtils = new BotUtils(BOT, strings);
         require('./commands.js')(commandManager);
 
         // roulette manager
-        var RouletteManager = new require('./lib/rouletteManager.js');
-        var rouletteManager = new RouletteManager(redisManager, settingsManager, bot);
+        const RouletteManager = new require('./lib/rouletteManager.js');
+        const rouletteManager = new RouletteManager(redisManager, settingsManager, BOT);
 
         // descramble manager
-        var ScrambleManager = new require('./lib/scrambleManager.js');
-        var scrambleManager = new ScrambleManager(redisManager, settingsManager, bot);
+        const ScrambleManager = new require('./lib/scrambleManager.js');
+        const scrambleManager = new ScrambleManager(redisManager, settingsManager, BOT);
 
-        var currentName = "";
-        var currentID = "";
-        var currentType = "";
-        var currentDJ = null;
-        var currentDJName = "";
-        var currentStream = "";
-        var lastMediaFKID = "", currentMediaPermaLink = undefined;
+        let currentName = "";
+        let currentID = "";
+        let currentType = "";
+        let currentDJ = null;
+        let currentDJName = "";
+        let currentStream = "";
+        let lastMediaFKID = "", currentMediaPermaLink = undefined;
 
         if(err) {
             return console.error(err);
@@ -105,31 +106,31 @@ new DubAPI({
 
         // reset roulette, for debugging only
         if(process.env.GAME_RESET) {
-            var games = process.env.GAME_RESET.split(',');
+            const games = process.env.GAME_RESET.split(',');
             games.forEach(function(gameName) {
                 redisManager.setLastGameTimestamp(gameName.toLowerCase(), true);
                 console.info('> ' + gameName.toUpperCase() + ' RESETED.');
             });
         }
 
-        var connectToRoom = bot.connect.bind(bot, process.env.DT_ROOM);
+        const connectToRoom = () => BOT.connect(process.env.DT_ROOM);
 
-        bot.on('connected', function(name) {
-            connectedBOT = bot;
+        BOT.on('connected', function(name) {
+            connectedBOT = BOT;
             console.info('> Connected to ' + name);
         });
 
-        bot.on('disconnected', function(name) {
+        BOT.on('disconnected', function(name) {
             connectedBOT = null;
             console.info('> Disconnected from ' + name);
             setTimeout(connectToRoom, 15000);
         });
 
-        bot.on('error', function(err) {
+        BOT.on('error', function(err) {
             console.error(err);
         });
 
-        bot.on(bot.events.roomPlaylistUpdate, function(data) {
+        BOT.on(BOT.events.roomPlaylistUpdate, function(data) {
             if(data !== undefined) {
                 if(data.media == undefined) {
                     return;
@@ -154,13 +155,13 @@ new DubAPI({
                 });
                 // Save Props START
                 if(currentDJ) {
-                    var props = propsManager.onSongChange(currentDJ.id);
+                    const props = propsManager.onSongChange(currentDJ.id);
                     if(props) {
-                        var propss = 'prop';
+                        let propStr = 'prop';
                         if(props > 1) {
-                            propss += 's';
+                            propStr += 's';
                         }
-                        bot.sendChat(currentDJ.username + ' got ' + props + ' ' + propss + ' for the song they just played.');
+                        BOT.sendChat(currentDJ.username + ' got ' + props + ' ' + propStr + ' for the song they just played.');
                     }
                 } else {
                     propsManager.resetProps();
@@ -175,14 +176,14 @@ new DubAPI({
                 if(currentType == "soundcloud") {
                     currentStream = data.media.streamURL;
                     currentMediaPermaLink = "not found (?!) or something went wrong";
-                    var soundcloudAccountId = process.env.SC_CLIENT_ID;
+                    const soundcloudAccountId = process.env.SC_CLIENT_ID;
                     if(soundcloudAccountId) {
                         httpReq({
                             hostname: 'api.soundcloud.com',
                             path: '/tracks/' + currentID + '?client_id=' + soundcloudAccountId,
                             method: 'GET'
                         }, function(res) {
-                            var data = '';
+                            let data = '';
                             res.setEncoding('utf8');
                             res.on('data', function(chunk) {
                                 data += chunk;
@@ -196,7 +197,7 @@ new DubAPI({
                                     currentMediaPermaLink = JSON.parse(data).permalink_url;
                                 } catch(err) {
                                     // workaround with RegExp
-                                    var match = data.match(/"permalink_url":"(.[^"]+)"/g);
+                                    const match = data.match(/"permalink_url":"(.[^"]+)"/g);
                                     if(match) {
                                         currentMediaPermaLink = match[0].match(/http(s|)\:\/\/.+/);
                                     }
@@ -210,88 +211,81 @@ new DubAPI({
             }
 
             // Waddie :rooHappy:
-            var startTime = (data.startTime || data.raw.startTime);
+            const startTime = (data.startTime || data.raw.startTime);
             if(currentType === 'youtube' && currentID === 'QZhBR7buK_k' && startTime <= 51) {
-                setTimeout(bot.sendChat.bind(bot, 'Waddie :rooHappy:'), 1000 * (51 - startTime));
+                setTimeout(BOT.sendChat.bind(BOT, 'Waddie :rooHappy:'), 1000 * (51 - startTime));
             }
 
             // Able to use markdown
-            if(currentID && userUtils.getUserDubs(bot.getSelf()) < 10) {
-                bot.updub();
+            if(currentID && userUtils.getUserDubs(BOT.getSelf()) < 10) {
+                BOT.updub();
             }
         });
 
-        bot.on(bot.events.chatMessage, function(data) {
+        const getRuntimeMessage = () => moment(startTime).fromNow();
+        BOT.on(BOT.events.chatMessage, function(data) {
             if(typeof data === "undefined" || typeof data.user === "undefined") {
                 console.error("data is undefined");
                 // It won't crash now.
-                bot.reconnect();
+                BOT.reconnect();
                 return;
             }
             // Setup Utils
-            var messageUtils = new MessageUtils({
-                bot: bot,
-                redisManager: redisManager,
-                twitchManager: twitchManager,
-                propsManager: propsManager,
-                rouletteManager: rouletteManager,
-                scrambleManager: scrambleManager,
-                settingsManager: settingsManager,
-                chatUtils: chatUtils,
-                userUtils: userUtils,
-                mediaUtils: mediaUtils,
-                botUtils: botUtils,
+            const messageUtils = new MessageUtils({
+                BOT,
+                redisManager,
+                twitchManager,
+                propsManager,
+                rouletteManager,
+                scrambleManager,
+                settingsManager,
+                chatUtils,
+                userUtils,
+                mediaUtils,
+                botUtils,
+                strings,
 
-                currentMediaPermaLink: currentMediaPermaLink,
-                currentDJ: currentDJ,
-                getRuntimeMessage: function() {
-                    return moment(startTime).fromNow();
-                }
+                currentMediaPermaLink,
+                currentDJ,
+                getRuntimeMessage
             }, data);
             chatManager.processChat(messageUtils, commandManager);
         });
 
-        bot.on(bot.events.deleteChatMessage, function(data) {
+        BOT.on(BOT.events.deleteChatMessage, function(data) {
             chatManager.removeFromImageRemovalQueue(data.id);
         });
+
+        // Punishment Logs
+        function logPunishment(data) {
+            if(!data || !data.mod || data.mod.id === BOT.getSelf().id)
+                return;
+            if(!data.user) {
+                const rawUser = data.raw.mutedUser || data.raw.kickedUser;
+                if(!rawUser)
+                    return;
+                data.user = {
+                    username: rawUser.username,
+                    id: rawUser._id
+                }
+            }
+            console.info(strings.formatPunishment(
+                data.type.replace('user-', ''),
+                data.user,
+                data.mod,
+                parseInt(data.time)
+            ))
+        }
+        BOT.on(BOT.events.userBan, logPunishment);
+        BOT.on(BOT.events.userUnban, logPunishment);
+        BOT.on(BOT.events.userMute, logPunishment);
+        BOT.on(BOT.events.userUnmute, logPunishment);
+        BOT.on(BOT.events.userKick, logPunishment);
 
         // Everything setup time to connect
         connectToRoom();
     }
 );
-
-function roughSizeOfObject(object) {
-    var objectList = [];
-    var recurse = function(value) {
-        var bytes = 0;
-        if(typeof value === 'boolean') {
-            bytes = 4;
-        } else if(typeof value === 'string') {
-            bytes = value.length * 2;
-        } else if(typeof value === 'number') {
-            bytes = 8;
-        } else if(typeof value === 'object' && objectList.indexOf(value) === -1) {
-            objectList[objectList.length] = value;
-            for(var i in value) {
-                bytes += 8; // an assumed existence overhead
-                bytes += recurse(value[i])
-            }
-        }
-        return bytes;
-    };
-    return recurse(object);
-}
-
-function time_format(d) {
-    var hours = format_two_digits(d.getHours());
-    var minutes = format_two_digits(d.getMinutes());
-    var seconds = format_two_digits(d.getSeconds());
-    return hours + ":" + minutes + ":" + seconds;
-}
-
-function format_two_digits(n) {
-    return n < 10 ? '0' + n : n;
-}
 
 
 /* Exit Events */

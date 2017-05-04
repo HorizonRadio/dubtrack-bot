@@ -9,6 +9,7 @@ Below you'll find how to setup the BOT yourself, though it might be incomplete t
 
 # Requirements to setup
 [NodeJS](https://nodejs.org/en/download/) (recommended LTS)
+[Redis](https://redis.io/download)
 
 # Getting started
 Couple of steps to get started and getting it working:

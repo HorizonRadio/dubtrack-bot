@@ -1,8 +1,8 @@
 {
-  "name": "KappaCave-BOT",
+  "name": "Horizon-BOT",
   "version": "1.0.1",
-  "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on KappaCave",
-  "main": "bot.js",
+  "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on Horizon",
+  "main": "dubbot.js",
   "dependencies": {
     "dotenv": "1.2.0",
     "dubapi": "latest",
@@ -15,11 +15,13 @@
   },
   "devDependencies": {},
   "scripts": {
+    "bot": "node dubbot.js",
+    "web": "node webbot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nightbloo/nb3bot.git"
+    "url": "git+https://github.com/Netox005/Horizon-BOT.git"
   },
   "keywords": [
     "Bot",
@@ -34,7 +36,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/netox005/KappaCave-BOT/issues"
+    "url": "https://github.com/Netox005/Horizon-BOT/issues"
   },
-  "homepage": "https://github.com/netox005/KappaCave-BOT#readme"
+  "homepage": "https://github.com/Netox005/Horizon-BOT#readme"
 }

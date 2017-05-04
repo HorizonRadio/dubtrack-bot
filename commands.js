@@ -607,7 +607,13 @@ function regCommands(commandManager) {
                         utils.BOT.sendChat('Our lucky winner is @' + utils.BOT.getUser(winnerId).username + '! You\'ll be moved to spot #' + (newSpot + 1) + ' in queue (' + movedMsg + ').');
                         utils.BOT.moderateMoveDJ(winnerId, newSpot);
                     });
-                    console.logGameState(`Roulette started by ${utils.strings.formatUser(utils.getUser())}. Duration: ${duration} second(s). Price: ${price} prop(s).`);
+                    console.logGameStart(
+                        'roulette', utils.getUser(),
+                        [
+                            `Duration: ${duration} second${duration - 1 ? 's' : ''}`,
+                            `Price: ${price} prop${price - 1 ? 's' : ''}`
+                        ]
+                    );
                 });
             }
         ),
@@ -848,6 +854,14 @@ function regCommands(commandManager) {
                     }, function(scrambledWord) {
                         utils.BOT.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
                         utils.BOT.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
+                        console.logGameStart(
+                            'scramble', utils.getUser(),
+                            [
+                                `Duration: ${duration} second${duration - 1 ? 's' : ''}`,
+                                `Reward: ${reward} prop${reward - 1 ? 's' : ''}`,
+                                `Word length: ${scrambledWord.length} letter${scrambledWord.length - 1 ? 's' : ''}`
+                            ]
+                        );
                     }, function(err, word) {
                         if(err) {
                             var errorMessage = 'Uh oh, something happened, and I don\'t know what! :S';
@@ -865,7 +879,6 @@ function regCommands(commandManager) {
                         }
                         utils.BOT.sendChat('*Scramble ended!* The word was _' + word + '_');
                     });
-                    console.logGameState(`Scramble started by ${utils.strings.formatUser(utils.getUser())}. Duration: ${duration} second(s). Reward: ${reward} prop(s). Word length: ${wordLength} letter(s).`);
                 });
             }
         ),

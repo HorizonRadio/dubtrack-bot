@@ -3,15 +3,16 @@
  * ABOUT
  **************************************************************************
  *
- * NightBlueBot is a BOT created for the
- * NightBlue3 room on www.dubtrack.fm
+ * NightBlueBot is a BOT created for
+ * the now vanished NightBlue3 room
+ * on www.dubtrack.fm
  *
  * This is a modified version of said
- * BOT, for usage on the KappaCave
- * room on www.dubtrack.fm as well
+ * BOT, for usage on the Horizon room
+ * on the same site
  *
  **************************************************************************
- * DEVELOPERS
+ * CONTRIBUTORS
  **************************************************************************
  *
  * @AngeloidIkaros
@@ -22,11 +23,18 @@
  * @ZubOhm
  *
  **************************************************************************
+ * CURRENT DEVELOPERS
+ **************************************************************************
+ *
+ * @AngeloidIkaros
+ * @Netux
+ *
+ **************************************************************************
  * COMMAND LIST
  **************************************************************************
  *
  * List can be found at https://git.io/v1nPT
- * by reading through the file `commands.js`
+ * or by reading through the file `commands.js`
  *
  **************************************************************************
  */
@@ -101,7 +109,7 @@ new DubAPI({
             return console.error(err);
         }
 
-        console.infoFW("> KappaCave-BOT", false);
+        console.infoFW("> Horizon-BOT", false);
         console.infoFW("> DEVELOPED BY ANGELOIDIKAROS, DEMOZ, LARRY1123, MATT, NETUX, ZUBOHM", false);
 
         // reset roulette, for debugging only
@@ -109,7 +117,7 @@ new DubAPI({
             const games = process.env.GAME_RESET.split(',');
             games.forEach(function(gameName) {
                 redisManager.setLastGameTimestamp(gameName.toLowerCase(), true);
-                console.info('> ' + gameName.toUpperCase() + ' RESETED.');
+                console.infoFW('> ' + gameName.toUpperCase() + ' RESETED.', false);
             });
         }
 
@@ -257,7 +265,7 @@ new DubAPI({
         });
 
         // Punishment Logs
-        function logPunishment(data) {
+        function doLogPunishment(data) {
             if(!data || !data.mod || data.mod.id === BOT.getSelf().id)
                 return;
             if(!data.user) {
@@ -269,18 +277,18 @@ new DubAPI({
                     id: rawUser._id
                 }
             }
-            console.logPunishment(strings.formatPunishment(
+            console.logPunishment(
                 data.type.replace('user-', ''),
                 data.user,
                 data.mod,
                 parseInt(data.time)
-            ))
+            );
         }
-        BOT.on(BOT.events.userBan, logPunishment);
-        BOT.on(BOT.events.userUnban, logPunishment);
-        BOT.on(BOT.events.userMute, logPunishment);
-        BOT.on(BOT.events.userUnmute, logPunishment);
-        BOT.on(BOT.events.userKick, logPunishment);
+        BOT.on(BOT.events.userBan, doLogPunishment);
+        BOT.on(BOT.events.userUnban, doLogPunishment);
+        BOT.on(BOT.events.userMute, doLogPunishment);
+        BOT.on(BOT.events.userUnmute, doLogPunishment);
+        BOT.on(BOT.events.userKick, doLogPunishment);
 
         // Everything setup time to connect
         connectToRoom();

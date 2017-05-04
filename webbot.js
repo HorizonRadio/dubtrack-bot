@@ -8,10 +8,11 @@ var express = require('express'),
     http = require('http'),
     https = require('https');
 var app = express();
+var packageInfo = require('./package.json');
 
 // Direct the peeps home
 app.get('/', function (req, res) {
-    res.redirect('https://github.com/nightbloo/nb3bot');
+    res.redirect(packageInfo.repository ? packageInfo.homepage : 'data:text/plain, what are you doing?');
     res.end();
 });
 

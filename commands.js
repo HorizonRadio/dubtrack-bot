@@ -844,7 +844,6 @@ function regCommands(commandManager) {
                     utils.scrambleManager.start({
                         duration,
                         reward,
-                        wordLength,
                         wordLengthRange
                     }, function(scrambledWord) {
                         utils.BOT.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');

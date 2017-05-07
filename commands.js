@@ -901,7 +901,7 @@ function regCommands(commandManager) {
                     return;
                 if(utils.scrambleManager.guess(utils.getUserId(), guess)) {
                     const word = utils.scrambleManager.word;
-                    utils.BOT.sendChat(`*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _${word}_ // https://www.wordnik.com/words/${word} .`);
+                    utils.BOT.sendChat(`*Scramble ended!* @${utils.getUserUsername()} guessed the word, which was _${word}_ // https://www.wordnik.com/words/${word} .`);
                 }
             }
         ),

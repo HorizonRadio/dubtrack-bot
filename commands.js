@@ -235,7 +235,7 @@ function regCommands(commandManager) {
                     }
 
                     seedrandom(username.hashCode() + username2.hashCode(), { global: true });
-                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' there is ' + Math.dice(100) + '% of :nb3h: between ' + username2 + ' and ' + username);
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' there is ' + Math.dice(100) + '% of <3 between ' + username2 + ' and ' + username);
                     seedrandom.resetGlobal();
                 }
             }
@@ -417,7 +417,8 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 utils.BOT.moderateDeleteChat(utils.getId());
-                utils.timeMuteUser(5, '@' + utils.getUserUsername() + ' ' + getShushMessage());
+                utils.botUtils.timeMute(utils.getUser(), null, 5, true);
+                utils.BOT.sendChat(`@${utils.getUserUsername()} ${getShushMessage()}`);
             }
         ),
         new Command('clear', ['clear', 'laggy'], 1, [], [],
@@ -493,7 +494,7 @@ function regCommands(commandManager) {
                     return;
                 }
                 if(target.id === utils.BOT.getSelf().id) {
-                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' for me :nb3Happy:? Thank you! I\'ll eat this ' + cookie.name + ' now if you don\'t mind :rawrrCookie:');
+                    utils.BOT.sendChat('@' + utils.getUserUsername() + ' for me :heart_eyes:? Thank you! I\'ll eat this ' + cookie.name + ' now if you don\'t mind :rawrrCookie:');
                     return;
                 }
                 utils.BOT.sendChat('@' + target.username + ' ' + utils.getUserUsername() + ' gave you a/an ' + cookie.name + ' ' + cookie.emote);
@@ -575,7 +576,7 @@ function regCommands(commandManager) {
                     }
 
                     utils.BOT.sendChat('*Roulette is starting!* Use `!join` to join in!');
-                    utils.BOT.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Price to join is of _' + price + ' prop' + (price !== 1 ? 's' : '') + '_.');
+                    utils.BOT.sendChat(`Ends in _${utils.strings.formatMeasure(duration, 'second')}_. | Price to join is of _${utils.strings.formatMeasure(price, 'prop')}_.`);
                     utils.rouletteManager.start(duration, price, function(error, winnerId, oldSpot, newSpot) {
                         if(error) {
                             utils.BOT.sendChat('aaaaand *the rou*-- wait.');
@@ -600,7 +601,7 @@ function regCommands(commandManager) {
                         if(oldSpot === newSpot) {
                             movedMsg = 'same as before :confused:';
                         } else {
-                            movedMsg += ' spot' + (movedMsg !== 1 ? 's' : '') + ' ' + (oldSpot > newSpot ? 'above! :nb3Boosted:' : 'below :frowning:');
+                            movedMsg += ' spot' + (movedMsg !== 1 ? 's' : '') + ' ' + (oldSpot > newSpot ? 'above! :SeemsGood:' : 'below :frowning:');
                         }
 
                         utils.BOT.sendChat('aaaaand *the roulette is over*!');
@@ -852,14 +853,18 @@ function regCommands(commandManager) {
                         reward,
                         wordLengthRange
                     }, function(scrambledWord) {
-                        utils.BOT.sendChat('*Scramble started!* Try to unscramble the word _' + scrambledWord + '_ with `!guess [word]`');
-                        utils.BOT.sendChat('Ends in _' + duration + ' second' + (duration !== 1 ? 's' : '') + '_. | Reward is of _' + reward + ' prop' + (reward !== 1 ? 's' : '') + '_.');
+                        const letterAmount = scrambledWord.length;
+                        [
+                            `*Scramble started!* Try to unscramble the word _${scrambledWord}_ (${utils.strings.formatMeasure(letterAmount, 'letter')}) with \`!guess [word]\``,
+                            `Ends in _${utils.strings.formatMeasure(duration, 'second')}_. | Reward is of _${utils.strings.formatMeasure(reward, 'prop')}_.`,
+                            '> https://www.wordnik.com/img/wordnik_badge_a2.png'
+                        ].forEach((message) => utils.BOT.sendChat(message));
                         console.logGameStart(
                             'scramble', utils.getUser(),
                             [
-                                `Duration: ${duration} second${duration - 1 ? 's' : ''}`,
-                                `Reward: ${reward} prop${reward - 1 ? 's' : ''}`,
-                                `Word length: ${scrambledWord.length} letter${scrambledWord.length - 1 ? 's' : ''}`
+                                `Duration: ${utils.strings.formatMeasure(duration, 'second')}`,
+                                `Reward: ${utils.strings.formatMeasure(reward, 'prop')}`,
+                                `Word length: ${utils.strings.formatMeasure(letterAmount, 'letter')}`
                             ]
                         );
                     }, function(err, word) {
@@ -877,7 +882,7 @@ function regCommands(commandManager) {
                             utils.BOT.sendChat('@' + utils.getUserUsername() + ' ' + errorMessage);
                             return;
                         }
-                        utils.BOT.sendChat('*Scramble ended!* The word was _' + word + '_');
+                        utils.BOT.sendChat(`*Scramble ended!* The word was _${word}_ // https://www.wordnik.com/words/${word}`);
                     });
                 });
             }
@@ -891,12 +896,12 @@ function regCommands(commandManager) {
                     utils.BOT.sendChat('@' + utils.getUserUsername() + ' I\'m not running a scramble right now.');
                     return;
                 }
-                var guess = utils.getCommandArguments()[0];
-                if(!guess) {
+                const guess = utils.getCommandArguments()[0];
+                if(!guess)
                     return;
-                }
                 if(utils.scrambleManager.guess(utils.getUserId(), guess)) {
-                    utils.BOT.sendChat('*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _' + utils.scrambleManager.word + '_.');
+                    const word = utils.scrambleManager.word;
+                    utils.BOT.sendChat(`*Scramble ended!* @' + utils.getUserUsername() + ' guessed the word, which was _${word}_ // https://www.wordnik.com/words/${word} .`);
                 }
             }
         ),
@@ -910,7 +915,8 @@ function regCommands(commandManager) {
                     return;
                 }
                 if(utils.scrambleManager.forceStop()) {
-                    utils.BOT.sendChat('Stop guessing! ' + utils.getUserUsername() + ' *stopped the scramble*. The word was _' + utils.scrambleManager.word + '_');
+                    const word = utils.scrambleManager.word;
+                    utils.BOT.sendChat(`Stop guessing! ${utils.getUserUsername()} *stopped the scramble*. The word was _${word}_ // https://www.wordnik.com/words/${word} .`);
                 }
             }
         ),

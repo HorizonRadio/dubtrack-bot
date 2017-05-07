@@ -5,7 +5,7 @@
   "main": "dubbot.js",
   "dependencies": {
     "dotenv": "1.2.0",
-    "dubapi": "latest",
+    "dubapi": "git+https://github.com/Netox005/DubAPI.git",
     "express": "^4.13.4",
     "ioredis": "latest",
     "jsonfile": "2.2.x",

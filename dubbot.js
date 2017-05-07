@@ -265,18 +265,24 @@ new DubAPI({
         });
 
         // Punishment Logs
-        function doLogPunishment(data) {
+        function fixAndCheckEventToLog(data) {
             if(!data || !data.mod || data.mod.id === BOT.getSelf().id)
-                return;
+                return false;
             if(!data.user) {
-                const rawUser = data.raw.mutedUser || data.raw.kickedUser;
+                const rawUser = data.raw.modUser;
                 if(!rawUser)
-                    return;
+                    return false;
                 data.user = {
                     username: rawUser.username,
                     id: rawUser._id
                 }
             }
+            return data;
+        }
+        function doLogPunishment(data) {
+            if(!(data = fixAndCheckEventToLog(data)))
+                return;
+
             console.logPunishment(
                 data.type.replace('user-', ''),
                 data.user,
@@ -290,10 +296,38 @@ new DubAPI({
         BOT.on(BOT.events.userUnmute, doLogPunishment);
         BOT.on(BOT.events.userKick, doLogPunishment);
 
+        // Role Change Logs
+        function doRoleChangeLog(data) {
+            if(!(data = fixAndCheckEventToLog(data)))
+                return;
+
+            const prevRole = BOT.roles[data.userPreviousRole];
+            const newRole = BOT.roles[data.user.role];
+
+            console.logRoleChange(
+                getRoleLevel(newRole) > getRoleLevel(prevRole),
+                data.user,
+                data.mod,
+                prevRole ? prevRole.label : null,
+                newRole ? newRole.label : null
+            )
+        }
+        BOT.on(BOT.events.userSetRole, doRoleChangeLog);
+        BOT.on(BOT.events.userUnsetRole, doRoleChangeLog);
+
         // Everything setup time to connect
         connectToRoom();
     }
 );
+
+const getRoleLevel = (role) => [
+    'dj',
+    'resident-dj',
+    'vip',
+    'mod',
+    'manager',
+    'co-owner'
+].indexOf(role ? role.type : null) + 1;
 
 
 /* Exit Events */

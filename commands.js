@@ -938,7 +938,15 @@ function regCommands(commandManager) {
                     }
                 });
             }
-        )
+        ),
+        new Command('blacklist', ['blacklist'], 1, [], [],
+            /**
+             * @param {MessageUtils} utils
+             */
+            function(utils) {
+                utils.BOT.sendChat(utils.getTargetName() + ' songs you can\'t or shouldn\'t play: https://git.io/vHDjH');
+            }
+        ),
     ].forEach(function(command) {
             var ret = commandManager.addCommand(command);
             if(!ret) {

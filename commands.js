@@ -944,7 +944,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.BOT.sendChat(utils.getTargetName() + ' songs you can\'t or shouldn\'t play: https://git.io/vHDjH');
+                utils.BOT.sendChat(utils.getTargetName() + ' Songs you can\'t or shouldn\'t play: https://git.io/vHDjH');
             }
         ),
     ].forEach(function(command) {

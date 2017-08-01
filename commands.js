@@ -85,7 +85,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.BOT.sendChat(utils.getTargetName() + ' You can download _give dem emotes_ at https://gde.netux.ml');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can download _give dem emotes_ at https://gde.netux.site');
                 utils.BOT.sendChat('*Note:* Put your mouse over the button to see instructions');
             }
         ),

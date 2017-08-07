@@ -417,7 +417,7 @@ function regCommands(commandManager) {
              */
             function(utils) {
                 utils.BOT.moderateDeleteChat(utils.getId());
-                utils.botUtils.timeMute(utils.getUser(), null, 5, true);
+                utils.botUtils.timeMute(utils.getUser(), null, 5, false);
                 utils.BOT.sendChat(`@${utils.getUserUsername()} ${getShushMessage()}`);
             }
         ),
@@ -1069,7 +1069,7 @@ function processAndDoPunish(utils, type) {
                 utils.BOT.sendChat("Something happened! D:");
                 return;
             case 'ban':
-                utils.botUtils.timeBan(punished, mod, time, false);
+                utils.botUtils.timeBan(punished, mod, time, true);
                 break;
             case 'mute':
                 utils.botUtils.timeMute(punished, mod, time, true);
@@ -1078,7 +1078,7 @@ function processAndDoPunish(utils, type) {
                 utils.botUtils.timeoutUser(punished, mod, time, true);
                 break;
             case 'kick':
-                utils.botUtils.kickUser(punished, mod, false);
+                utils.botUtils.kickUser(punished, mod, true);
                 break;
         }
     }

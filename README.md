@@ -62,7 +62,7 @@ TWITCH_CLIENT_ID=foo       # Twitch Client ID
 TWITCH_CLIENT_SECRET=bar   # Twitch Secret ID
 
 # Image Removal
-IMGTIME=number               # [OPTIONAL] Number for image removal (in seconds), if less than 0 then it's disabled. Default is 15
+IMGTIME=number               # [OPTIONAL] Number for image removal (in minutes), if less than 0 then it's disabled. Default is 15
 IMGREMOVALSPAM_AMOUNT=number # [OPTIONAL] Number of images on a single message "thread" (messages from the same user, in a row) before removing them (image removal because of spam), if less than 0 then it's disabled. Default is 5.
 IMGREMOVALSPAM_TIME=number   # [OPTIONAL] Number of time (in minutes) to unmute user after instant image removal because of spam, if less than 0 then it's disabled. Default is 1.
 IMGREMOVALDUBS_AMOUNT=number # [OPTIONAL] Number of dubs necessary by the user to bypass instant image removal because of dubs, if less than 0 then it's disabled. Default is 300.

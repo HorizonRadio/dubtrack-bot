@@ -33,6 +33,12 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+# Visual Studio Code
+.vscode/
+
+## Extensions
+.history/
+
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
 *.iml
@@ -136,16 +142,11 @@ Session.vim
 .netrwhist
 
 # Project files
-
-###################
-# Files #
-###################
 *.env
 banphrases.json
 run.bat
-###############
-# Directories #
-###############
+
+# Project directories
 quotes/
 scores/
 secrets/

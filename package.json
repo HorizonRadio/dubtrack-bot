@@ -1,7 +1,7 @@
 {
-  "name": "Horizon-BOT",
+  "name": "horizon-bot",
   "version": "1.0.1",
-  "description": "Originally nb3bot: Bot made for NB3's dubtrack room. Now also used on Horizon",
+  "description": "BOT made for Horizon's Dubtrack room",
   "main": "dubbot.js",
   "dependencies": {
     "dotenv": "1.2.0",

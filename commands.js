@@ -957,57 +957,34 @@ function regCommands(commandManager) {
 }
 
 function requestCatFact(dontSetCooldown, noFacts, cb) {
-    var requestsCount = 0;
-
-    function doSo(_cb) {
-        if(requestsCount > 5) {
-            dontSetCooldown();
-            return;
+    httpsReq({
+        hostname: 'catfact.ninja',
+        path: '/fact',
+        method: 'GET',
+        body: {
+            max_length: 200
         }
-        else {
-            requestsCount++;
-        }
-
-        httpsReq({
-            hostname: 'catfacts-api.appspot.com',
-            path: '/api/facts',
-            method: 'GET'
-        }, function(res) {
-            var data = '';
-            res.setEncoding('utf8');
-            res.on('data', function(chunk) {
-                data += chunk;
-            });
-            res.on('error', function(x) {
+    }, function(res) {
+        var data = '';
+        res.setEncoding('utf8');
+        res.on('data', function(chunk) {
+            data += chunk;
+        });
+        res.on('error', function(x) {
+            noFacts();
+            console.error(x);
+        });
+        res.on('end', function() {
+            try {
+                data = JSON.parse(data);
+            } catch(x) {
                 noFacts();
-                console.error(x);
-            });
-            res.on('end', function() {
-                try {
-                    data = JSON.parse(data);
-                }
-                catch(x) {
-                    noFacts();
-                }
+            }
 
-                // Fact too long. To avoid spam request a new one and call _cb.
-                if(data.facts[0].length > 125) {
-                    doSo(_cb);
-                    _cb(false);
-                    return;
-                }
-
-                // Replace last period and call _cb.
-                _cb(data.facts[0].replace(/\.$/g, ''));
-            });
-        }).end();
-    }
-
-    doSo(function(result) {
-        if(result !== false) {
-            cb(result);
-        }
-    });
+            // Replace last period
+            cb(data.fact.replace(/\.$/g, ''));
+        });
+    }).end();
 }
 
 function doListCommand(listInfo, showNotFoundFunk, showSelectedFunk, utils, command) {

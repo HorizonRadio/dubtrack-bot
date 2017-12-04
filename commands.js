@@ -411,16 +411,6 @@ function regCommands(commandManager) {
                 }
             }
         ),
-        new Command('skip', ['skip'], 0, [], [],
-            /**
-             * @param {MessageUtils} utils
-             */
-            function(utils) {
-                utils.BOT.moderateDeleteChat(utils.getId());
-                utils.botUtils.timeMute(utils.getUser(), null, 5, false);
-                utils.BOT.sendChat(`@${utils.getUserUsername()} ${getShushMessage()}`);
-            }
-        ),
         new Command('clear', ['clear', 'laggy'], 1, [], [],
             /**
              * @param {MessageUtils} utils

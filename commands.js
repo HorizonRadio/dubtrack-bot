@@ -772,12 +772,12 @@ function regCommands(commandManager) {
                 utils.BOT.sendChat(utils.getTargetName() + ' Feel free to join our own Discord Server: https://discord.gg/tQgSvdq');
             }
         ),
-        new Command('repository', ['repository', 'repo'], 1, [], [],
+        new Command('repository', ['repository', 'repo', 'git', 'github'], 1, [], [],
             /**
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.BOT.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://git.io/vSIuM');
+                utils.BOT.sendChat(utils.getTargetName() + ' You can find my GitHub repository here: https://git.io/vNByj');
             }
         ),
         new Command('scramble_start', ['scramble', 'scrambleword', 'scrable_start'], 1, ['mod'], [],

@@ -306,7 +306,7 @@ function regCommands(commandManager) {
              * @param {MessageUtils} utils
              */
             function(utils) {
-                utils.BOT.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/v1nPT');
+                utils.BOT.sendChat(utils.getTargetName() + ' A command list can be found here: https://git.io/vN06V');
             }
         ),
         new Command('setcd', ['setcd', 'setcooldown', 'cooldown'], 0, ['mod'], [],

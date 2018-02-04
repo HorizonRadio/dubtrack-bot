@@ -235,21 +235,17 @@ new DubAPI({
                 fs.writeFile(
                     path.resolve(__dirname, settingsManager.getSongSavePath(), 'currentSong.json'),
                     JSON.stringify({
-                        song: data.media 
-                            ? {
-                                name: data.media.name,
-                                thumbnail: data.media.images && data.media.images.thumbnail,
-                                fkid: data.media.fkid,
-                                type: data.media.type,
-                                duration: data.media.length
-                            }
-                            : undefined,
-                        dj: data.user
-                            ? {
-                                username: data.user.username,
-                                avatarUrl: data.user.profileImage && data.user.profileImage.secure_url
-                            }
-                            : undefined
+                        song: data.media && {
+                            name: data.media.name,
+                            thumbnail: data.media.images && data.media.images.thumbnail,
+                            fkid: data.media.fkid,
+                            type: data.media.type,
+                            duration: data.media.length
+                        },
+                        dj: data.user && {
+                            username: data.user.username,
+                            avatarUrl: data.user.profileImage && data.user.profileImage.secure_url
+                        }
                     }),
                     'utf8',
                     (err) => {

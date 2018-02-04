@@ -46,6 +46,7 @@ require('./lib/discordWebhookLoader');
 const DubAPI = require('dubapi');
 const jsonfile = require('jsonfile');
 const fs = require('fs');
+const path = require('path');
 const os = require("os");
 const httpReq = require('http').request;
 // Twitch Stuff
@@ -227,6 +228,32 @@ new DubAPI({
             // Able to use markdown
             if(currentID && userUtils.getUserDubs(BOT.getSelf()) < 10) {
                 BOT.updub();
+            }
+
+            // Save song to JSON
+            if(settingsManager.getSongSavePath()) {
+                fs.writeFile(
+                    path.resolve(__dirname, settingsManager.getSongSavePath(), 'currentSong.json'),
+                    JSON.stringify({
+                        song: {
+                            name: data.media.name,
+                            thumbnail: data.media.images.thumbnail,
+                            fkid: data.media.fkid,
+                            type: data.media.type,
+                            duration: data.media.length
+                        },
+                        dj: {
+                            username: data.user.username,
+                            avatarUrl: data.user.profileImage.secure_url
+                        }
+                    }),
+                    'utf8',
+                    (err) => {
+                        if(err) {
+                            console.error('Error saving song as JSON:', err)
+                        }
+                    }
+                )
             }
         });
 

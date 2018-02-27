@@ -740,14 +740,11 @@ function regCommands(commandManager) {
                         showListMessage: 'Pick a streamer from the list: %s or _ALL_ (resident-dj+)',
                         showListArgumentName: 'streamer',
                         list: {
-                            'Snaky': 'SnakyLUL',
-                            'Frosolf': 'frosolf',
-                            'The_kineese': 'the_kineese',
+                            'AL3366': 'AL33669',
+                            'Zamtron': 'zamtron',
+                            'Cooxy': 'itscoxy',
                             'Lord_eRazor': 'Lord_eRazor',
-                            'TheHaremKing': 'dubx_theharemking',
-                            'DemoZ': 'KRDemoZ',
-                            'Erikku-kun': 'DCIErikku',
-                            'Juunix': 'Juunix0'
+                            'ruthzik': 'ruthzik'
                         },
                     },
                     function(selectedName, list) {

@@ -9,7 +9,7 @@
     "express": "^4.13.4",
     "ioredis": "latest",
     "jsonfile": "2.2.x",
-    "moment": "^2.11.2",
+    "moment": "2.19.3",
     "seed-random": "^2.2.0",
     "twitch-api": "^0.4.3"
   },
@@ -36,7 +36,7 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Netox005/Horizon-BOT/issues"
+    "url": "https://github.com/HorizonRadio/dubtrack-bot/issues"
   },
-  "homepage": "https://github.com/Netox005/Horizon-BOT#readme"
+  "homepage": "https://github.com/HorizonRadio/dubtrack-bot#readme"
 }

@@ -44,7 +44,6 @@
 require('./lib/utilsLoader');
 require('./lib/discordWebhookLoader');
 const DubAPI = require('dubapi');
-const jsonfile = require('jsonfile');
 const fs = require('fs');
 const path = require('path');
 const os = require("os");

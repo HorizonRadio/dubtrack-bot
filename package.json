@@ -4,14 +4,14 @@
   "description": "BOT made for Horizon's Dubtrack room",
   "main": "dubbot.js",
   "dependencies": {
-    "dotenv": "1.2.0",
+    "dotenv": "^6.0.0",
     "dubapi": "git+https://github.com/Netox005/DubAPI.git",
-    "express": "^4.13.4",
-    "ioredis": "latest",
-    "jsonfile": "2.2.x",
-    "moment": "^2.11.2",
+    "express": "^4.16.3",
+    "ioredis": "^3.2.2",
+    "jsonfile": "^4.0.0",
+    "moment": "^2.22.2",
     "seed-random": "^2.2.0",
-    "twitch-api": "^0.4.3"
+    "twitch-api": "^0.5.0"
   },
   "devDependencies": {},
   "scripts": {

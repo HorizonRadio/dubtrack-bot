@@ -144,6 +144,7 @@ Session.vim
 # Project files
 *.env
 banphrases.json
+currentSong.json
 run.bat
 
 # Project directories

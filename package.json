@@ -11,7 +11,7 @@
     "jsonfile": "^4.0.0",
     "moment": "^2.22.2",
     "seed-random": "^2.2.0",
-    "twitch-api": "^0.5.0"
+    "twitch-helix": "^1.0.7"
   },
   "devDependencies": {},
   "scripts": {

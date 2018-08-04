@@ -1,17 +1,19 @@
 {
   "name": "horizon-bot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "BOT made for Horizon's Dubtrack room",
   "main": "dubbot.js",
   "dependencies": {
-    "dotenv": "^6.0.0",
-    "dubapi": "git+https://github.com/Netox005/DubAPI.git",
+    "boom": "^7.2.0",
+    "dotenv": "6.0.0",
+    "dubapi": "git+https://github.com/Netux/DubAPI.git",
     "express": "^4.16.3",
     "ioredis": "^3.2.2",
     "jsonfile": "^4.0.0",
     "moment": "^2.22.2",
     "seed-random": "^2.2.0",
-    "twitch-helix": "^1.0.7"
+    "tough-cookie": "^2.4.3",
+    "twitch-api": "git+https://github.com/HorizonRadio/twitch-api.git"
   },
   "devDependencies": {},
   "scripts": {
@@ -21,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Netox005/Horizon-BOT.git"
+    "url": "git+https://github.com/Netux/Horizon-BOT.git"
   },
   "keywords": [
     "Bot",

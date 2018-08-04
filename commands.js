@@ -724,23 +724,16 @@ function regCommands(commandManager) {
              */
             function(utils, command) {
                 function fetchStreamerAndSendMessage(user, channel) {
-                    utils.twitchManager.getStreamInfoByUsername(channel)
-                        .then(async (stream) => {
-                            const channelUrl = `https://www.twitch.tv/${ channel.toLowerCase() }`
-
-                            if(stream) {
-                                const game = await utils.twitchManager.getGame(stream.game_id)
-
-                                message = `*Streaming*  ${ game.name } at ${ channelUrl }`
-                            } else {
-                                message = `*Offline*, ${ channelUrl }`
-                            }
-
-                            utils.BOT.sendChat(`${ user } is currently ${ message }`)
-                        })
-                        .catch((err) => {
-                            utils.BOT.sendChat(`${ user } is not a valid TwitchTV Channel name/is not in the list.`)
-                        })
+                    utils.twitchManager.getStream(channel, function(err, body) {
+                        var message;
+                        if(!err) {
+                            var stream = body.stream;
+                            if(stream)
+                                message = user + ' is currently *Streaming*  ' + stream.game + ' at ' + stream.channel.url;
+                            else message = user + ' is currently *Offline*, https://www.twitch.tv/' + channel.toLowerCase();
+                        } else message = user + ' is not a valid TwitchTV Channel name/is not in the list.';
+                        utils.BOT.sendChat(message);
+                    });
                 }
 
                 doListCommand({
